@@ -1,19 +1,28 @@
-import { acceptHMRUpdate } from "pinia";
+import { acceptHMRUpdate } from 'pinia';
 import { defineStore } from 'pinia';
-import { Product } from 'lib/umbraco/types'
+import { Product } from 'lib/umbraco/types';
 
 
+interface ProductState{
+    products: Product[];
+    loading: boolean;
+}
 
 
-export const productStore = defineStore('productStore',{
-    state: () => ({
-        products:[] as Product[]
+export const useProductStore = defineStore('products',{
+    state: (): ProductState => ({
+        products:[],
+        loading: false
     }),
 
     actions:{
         async setProducts(){
-            const res = await useFetch('/api/products');
-            console.log(res)
+            this.loading = true
+            const data = await $fetch('/api/products')
+
+            this.products = data
+
+            console.log(this.products)
         }
     }
 })
@@ -21,5 +30,5 @@ export const productStore = defineStore('productStore',{
 
 
 if(import.meta.hot){
-    import.meta.hot.accept(acceptHMRUpdate(productStore, import.meta.hot))
+    import.meta.hot.accept(acceptHMRUpdate(useProductStore, import.meta.hot))
 }

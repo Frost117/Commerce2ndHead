@@ -8,5 +8,6 @@ export default defineEventHandler(async (event) =>{
         }
     })
     const content = await response
+    console.log(content)
     return content
 })

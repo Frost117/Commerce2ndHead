@@ -11,7 +11,6 @@ export default defineNuxtConfig({
     autoImports: [
       // automatically imports `defineStore`
       ['defineStore', 'acceptHMRUPdate'],// import { defineStore } from 'pinia'
-      ['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'
     ],
   }
 })
