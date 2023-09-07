@@ -18,6 +18,7 @@
     <PackageReference Include="Umbraco.Commerce.Persistence.Sqlite" Version="12.1.0--preview.100.g3e37ccc" />
     <PackageReference Include="Umbraco.Community.Contentment" Version="4.4.4" />
     <PackageReference Include="Umbraco.Forms" Version="12.1.0-rc1" />
+    <ProjectReference Include="..\..\Umbraco.Headless.Demo.Api\Umbraco.Headless.Demo.Api.csproj" />
     <ProjectReference Include="..\Umbraco.Headless.Demo\Umbraco.Headless.Demo.csproj" />
     <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="68.2.0.9" Condition="$(RuntimeIdentifier.StartsWith('linux')) or $(RuntimeIdentifier.StartsWith('win')) or ('$(RuntimeIdentifier)' == '' and !$([MSBuild]::IsOSPlatform('osx')))" />
   </ItemGroup>

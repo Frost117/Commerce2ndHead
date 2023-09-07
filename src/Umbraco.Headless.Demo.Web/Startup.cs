@@ -1,5 +1,6 @@
 using Umbraco.Commerce.Cms.Web.Api.Storefront;
 using Umbraco.Commerce.Extensions;
+using Umbraco.Headless.Demo.Api.Extensions.Swagger;
 
 namespace Umbraco.Headless.Demo.Web
 {
@@ -37,6 +38,7 @@ namespace Umbraco.Headless.Demo.Web
                 .AddWebsite()
                 .AddDeliveryApi()
                 .AddHeadlessDemoSite()
+                .ConfigureProductsSwaggerGen()
                 .AddComposers()
                 .Build();
         }
