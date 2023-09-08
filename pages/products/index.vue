@@ -1,27 +1,29 @@
 <template>
 
 
-Here are products
+<H1>Here are some fancy products</H1>
 
-
-<div v-for="product in products.items"> {{ product.name }}</div>
+<div v-for="product in content.items" :key="product.id">
+    {{ product.name }}
+</div>
 
 </template>
 
 <script setup lang="ts">
 
-/*const products = useFetch('/api/products')*/
+import { useProductsStore } from '@/stores/products';
+
+// Call the fetchProducts action to load the initial data
+const productsStore = useProductsStore();
+
+productsStore.fetchProducts();
 
 
-import { storeToRefs } from 'pinia';
 
-const productsStore = useProductStore();
+const response = await useFetch('https://commerceheadless.euwest01.umbraco.io/api/v1/products')
 
-productsStore.setProducts()
-
-const {products} = storeToRefs(productsStore)
-
-
+const content = response.data
+const error = response.error
 
 </script>
 

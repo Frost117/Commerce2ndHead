@@ -1,13 +1,6 @@
-export default defineEventHandler(async (event) =>{
-    const response = await $fetch('http://localhost:38817/umbraco/delivery/api/v1/content',{
-        headers:{
-            'ApiKey':'3vC9B7sesuzXflUgYP3Z1lbGdzeEgDV8'
-        },
-        query:{
-            'fetch':'descendants:products'
-        }
-    })
-    const content = await response
-    console.log(content)
-    return content
-})
+/*
+export default defineEventHandler(async (event) => {
+    const { data } = await $fetch("https://icanhazdadjoke.com/");
+    return data;
+});
+*/
