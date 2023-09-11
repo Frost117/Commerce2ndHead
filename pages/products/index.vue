@@ -1,31 +1,22 @@
 <template>
 
+<h1>Here are products.... maybe</h1>
 
-<H1>Here are some fancy products</H1>
-
-<div v-for="product in content.items" :key="product.id">
-    {{ product.name }}
-</div>
+   {{ products }}
 
 </template>
 
 <script setup lang="ts">
-
 import { useProductsStore } from '@/stores/products';
 
-// Call the fetchProducts action to load the initial data
-const productsStore = useProductsStore();
 
-productsStore.fetchProducts();
+    const productsStore = useProductsStore();
+    const products = await productsStore.fetchProducts();
 
-
-
-const response = await useFetch('https://commerceheadless.euwest01.umbraco.io/api/v1/products')
-
-const content = response.data
-const error = response.error
+    console.log(products)
 
 </script>
 
-<style >
+<style scoped>
+
 </style>
