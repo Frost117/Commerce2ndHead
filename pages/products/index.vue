@@ -1,29 +1,22 @@
 <template>
 
+<h1>Here are products.... maybe</h1>
 
-Here are products
-
-
-<div v-for="product in products.items"> {{ product.name }}</div>
+   {{ products }}
 
 </template>
 
 <script setup lang="ts">
-
-/*const products = useFetch('/api/products')*/
-
-
-import { storeToRefs } from 'pinia';
-
-const productsStore = useProductStore();
-
-productsStore.setProducts()
-
-const {products} = storeToRefs(productsStore)
+import { useProductsStore } from '@/stores/products';
 
 
+    const productsStore = useProductsStore();
+    const products = await productsStore.fetchProducts();
+
+    console.log(products)
 
 </script>
 
-<style >
+<style scoped>
+
 </style>
