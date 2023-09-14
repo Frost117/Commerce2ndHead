@@ -1,32 +1,36 @@
 import { defineStore } from 'pinia';
 import { Product } from 'lib/umbraco/types';
 
+
 export const useProductsStore = defineStore('products',{
     state: () => ({
-        products:[] as Product[],
-        currentPage: 1,
-        loading: false,
-        error:null
+        products:[],
+        currentPage: 1
     }),
-
-    getters:{
-        
-    },
 
     actions:{
         async fetchProducts(){              
 
-                const { data, error, pending } = await useFetch(`https://commerceheadless.euwest01.umbraco.io/api/v1/products?page=${this.currentPage}`)
+                const { data } = await useFetch(`https://commerceheadless.euwest01.umbraco.io/api/v1/products?page=${this.currentPage}`)
 
-                const response = await data.value
-                console.log(response, error)
-                this.products = await response.items;
+                const response = await data.value;
+                const products = response.items;
+                
+                this.products = products;
             
         },
 
         nextPage(){
             this.currentPage++;
             this.fetchProducts();
+        },
+        previousPage(){
+            this.currentPage--;
+            this.fetchProducts();
         }
     }
 });
+
+export function setupProductsStore() {
+    return useProductsStore();
+  }

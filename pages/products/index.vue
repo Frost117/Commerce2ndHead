@@ -2,18 +2,32 @@
 
 <h1>Here are products.... maybe</h1>
 
-   {{ products }}
+<div v-for="product in products">
+    {{ product.name }}
+</div>
+
+<button @click="loadPreviousPage">Load Previous Page</button>
+
+<button @click="loadNextPage">Load Next Page</button>
+
 
 </template>
 
 <script setup lang="ts">
-import { useProductsStore } from '@/stores/products';
+import { storeToRefs } from 'pinia';
 
+const productsStore = useProductsStore();
+const { products } = storeToRefs(productsStore)
 
-    const productsStore = useProductsStore();
-    const products = await productsStore.fetchProducts();
+productsStore.fetchProducts();
 
-    console.log(products)
+async function loadNextPage() {
+    productsStore.nextPage();
+}
+
+async function loadPreviousPage() {
+    productsStore.previousPage();
+}
 
 </script>
 
