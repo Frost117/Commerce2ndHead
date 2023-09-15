@@ -2,9 +2,15 @@
 
 <h1>Here are products.... maybe</h1>
 
-<div v-for="product in products">
-    {{ product.name }}
-</div>
+
+
+
+    <Products 
+    v-for="product in products"
+    :key="product.id"
+    :name="product.name"
+    />
+
 
 <button @click="loadPreviousPage">Load Previous Page</button>
 
