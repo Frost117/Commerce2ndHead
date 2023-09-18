@@ -1,15 +1,18 @@
 <template>
     <main>
-        <NuxtLayout>
-            <Header />
-            <main>
-                <h1>Welcome to the BlackOps Commerce Store!</h1>
-                <h3>Your supplier for Umbraco Swag and other goods!</h3>
-                <p>{{ count }}</p>
-                <button @click="increment()">Click me please</button>
-            </main>
-            <NuxtPage />
-        </NuxtLayout>
+        <h1>Welcome to the BlackOps Commerce Store!</h1>
+        <h3>Your supplier for Umbraco Swag and other goods!</h3>
+        <p>{{ count }}</p>
+        <button @click="increment()">Click me please</button>
+
+        <div class="featured">
+            <h2>Check some of our featured products</h2>
+            <div class="featured-products">
+                <div class="card">
+                    
+                </div>
+            </div>
+        </div>
     </main>
 </template>
 
