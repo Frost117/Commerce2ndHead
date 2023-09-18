@@ -1,9 +1,6 @@
 <template>
 
-<h1>Here are products.... maybe</h1>
-
-
-
+<h1>Here are products.... Finally</h1>
 
     <Products 
     v-for="product in products"
@@ -24,8 +21,6 @@ import { storeToRefs } from 'pinia';
 
 const productsStore = useProductsStore();
 const { products } = storeToRefs(productsStore)
-
-productsStore.fetchProducts();
 
 async function loadNextPage() {
     productsStore.nextPage();
