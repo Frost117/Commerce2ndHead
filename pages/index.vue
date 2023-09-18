@@ -40,10 +40,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const count = ref(1)
-
-function increment() {
-    return count.value++
-}
+const productsStore = useProductsStore();
+productsStore.fetchProducts();
 
 </script>
