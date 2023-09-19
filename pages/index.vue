@@ -2,17 +2,16 @@
     <main>
         <h1>Welcome to the BlackOps Commerce Store!</h1>
         <h3>Your supplier for Umbraco Swag and other goods!</h3>
-        <p>{{ count }}</p>
-        <button @click="increment()">Click me please</button>
 
         <div class="featured">
             <h2>Check some of our featured products</h2>
             <div class="featured-products">
                 <div class="card">
-                    
+                    {{ products }}
                 </div>
             </div>
         </div>
+        <button @click="loadNow">CLICK TO LOAD</button>
     </main>
 </template>
 
@@ -39,8 +38,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import { Product } from 'lib/umbraco/types';
 
+// This has to be my biggest 40 IQ move in my career. This cannot be right, but it works
 const productsStore = useProductsStore();
-productsStore.fetchProducts();
+const { products } = storeToRefs(productsStore)
+await productsStore.fetchProducts();
 
 </script>
