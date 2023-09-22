@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <button @click="loadNow">CLICK TO LOAD</button>
+        
     </main>
 </template>
 
@@ -37,13 +37,9 @@
 </style>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
-import { Product } from 'lib/umbraco/types';
 
-// This has to be my biggest 40 IQ move in my career. This cannot be right, but it works
 const productsStore = useProductsStore();
 const { products } = storeToRefs(productsStore)
-await productsStore.fetchProducts();
 
 </script>

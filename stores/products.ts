@@ -11,8 +11,8 @@ export const useProductsStore = defineStore('products',{
     actions:{
         async fetchProducts(){
             try{
-                const { data: productData } = await useFetch(`https://commerceheadless.euwest01.umbraco.io/api/v1/products?page=${this.currentPage}`)
-                const products = productData.value
+                const { data } = await useFetch(`https://commerceheadless.euwest01.umbraco.io/api/v1/products?page=${this.currentPage}`)
+                const products = data.value
                 console.log(products)
                 // @ts-ignore
                 this.products = products.items;
