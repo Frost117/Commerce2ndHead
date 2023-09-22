@@ -26,7 +26,6 @@
     }
     main {
         min-height: 100vh;
-        height: 100%;
         
     }
 
