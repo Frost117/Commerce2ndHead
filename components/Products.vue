@@ -1,13 +1,13 @@
 <template>
     <div>
-        {{ name }}
+        {{ Name }}
     </div>
 </template>
 
 <script setup lang="ts">
 
 defineProps({
-    name:{
+    Name:{
         type: String,
         required: true
     }

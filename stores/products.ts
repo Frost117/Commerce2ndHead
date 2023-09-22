@@ -11,11 +11,13 @@ export const useProductsStore = defineStore('products',{
     actions:{
         async fetchProducts(){
             try{
-                const { data } = await useFetch(`https://commerceheadless.euwest01.umbraco.io/api/v1/products?page=${this.currentPage}`)
-                const products = data.value
-                console.log(products)
+                const resp = await $fetch(`https://commerceheadless.euwest01.umbraco.io/api/v1/products?page=${this.currentPage}`,{
+                    parseResponse: JSON.parse
+                })
+                
                 // @ts-ignore
-                this.products = products.items;
+                this.products = resp
+                
             }catch(err) {
                 console.log(err)
             }

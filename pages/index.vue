@@ -9,7 +9,7 @@
                 <Products 
                 v-for="product in products"
                 :key="product.id"
-                :name="product.name"
+                :Name="product.Name"
                 />
             </div>
         </div>

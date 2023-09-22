@@ -5,7 +5,7 @@
     <Products 
     v-for="product in products"
     :key="product.id"
-    :name="product.name"
+    :Name="product.Name"
     />
 
 
@@ -29,6 +29,7 @@ async function loadNextPage() {
 async function loadPreviousPage() {
     productsStore.previousPage();
 }
+
 
 </script>
 
