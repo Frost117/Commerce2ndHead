@@ -6,12 +6,14 @@
         <div class="featured">
             <h2>Check some of our featured products</h2>
             <div class="featured-products">
-                <div class="card">
-                    {{ products }}
-                </div>
+                <Products 
+                v-for="product in products"
+                :key="product.id"
+                :Name="product.Name"
+                />
             </div>
         </div>
-        <button @click="loadNow">CLICK TO LOAD</button>
+        
     </main>
 </template>
 
@@ -20,11 +22,12 @@
         padding: 0;
         margin: 0;
         box-sizing: border-box;
-        
+        background-image: linear-gradient(to right top, #a40cf5, #6e2dd2, #4031ab, #1d2b80, #0c2154);
     }
     main {
-        height: 100vh;
-        background-image: linear-gradient(to right top, #a40cf5, #6e2dd2, #4031ab, #1d2b80, #0c2154);
+        min-height: 100vh;
+        height: 100%;
+        
     }
 
     main > h1, h3 {
@@ -37,13 +40,9 @@
 </style>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
-import { Product } from 'lib/umbraco/types';
 
-// This has to be my biggest 40 IQ move in my career. This cannot be right, but it works
 const productsStore = useProductsStore();
 const { products } = storeToRefs(productsStore)
-await productsStore.fetchProducts();
 
 </script>

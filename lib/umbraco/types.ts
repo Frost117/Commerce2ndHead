@@ -76,7 +76,7 @@ export type Product = {
   id: string;
   handle: string;
   availableForSale: boolean;
-  title: string;
+  Name: string;
   description: string;
   descriptionHtml: string;
   options: ProductOption[];
