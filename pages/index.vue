@@ -6,9 +6,11 @@
         <div class="featured">
             <h2>Check some of our featured products</h2>
             <div class="featured-products">
-                <div class="card">
-                    {{ products }}
-                </div>
+                <Products 
+                v-for="product in products"
+                :key="product.id"
+                :name="product.name"
+                />
             </div>
         </div>
         
@@ -20,11 +22,12 @@
         padding: 0;
         margin: 0;
         box-sizing: border-box;
-        
+        background-image: linear-gradient(to right top, #a40cf5, #6e2dd2, #4031ab, #1d2b80, #0c2154);
     }
     main {
-        height: 100vh;
-        background-image: linear-gradient(to right top, #a40cf5, #6e2dd2, #4031ab, #1d2b80, #0c2154);
+        min-height: 100vh;
+        height: 100%;
+        
     }
 
     main > h1, h3 {
