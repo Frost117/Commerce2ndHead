@@ -6,6 +6,7 @@
             v-for="product in products"
             :key="product.id"
             :Name="product.Name"
+            @click="() => viewProduct(product.Route.Path)"
             />
 
 
@@ -29,6 +30,12 @@ async function loadNextPage() {
 async function loadPreviousPage() {
     productsStore.previousPage();
 }
+
+async function viewProduct(productUrl){    
+    await navigateTo(`products${productUrl}`)
+}
+
+
 
 
 </script>
