@@ -22,12 +22,10 @@
         padding: 0;
         margin: 0;
         box-sizing: border-box;
-        background-image: linear-gradient(to right top, #a40cf5, #6e2dd2, #4031ab, #1d2b80, #0c2154);
     }
     main {
         min-height: 100vh;
-        height: 100%;
-        
+        background-image: linear-gradient(to right top, #a40cf5, #6e2dd2, #4031ab, #1d2b80, #0c2154);
     }
 
     main > h1, h3 {

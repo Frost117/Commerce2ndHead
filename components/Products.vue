@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="">
         {{ Name }}
     </div>
 </template>
@@ -10,6 +10,9 @@ defineProps({
     Name:{
         type: String,
         required: true
+    },
+    Properties:{
+        type: Object,
     }
 })
 

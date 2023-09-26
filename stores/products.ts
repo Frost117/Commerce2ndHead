@@ -14,7 +14,6 @@ export const useProductsStore = defineStore('products',{
                 const resp = await $fetch(`https://commerceheadless.euwest01.umbraco.io/api/v1/products?page=${this.currentPage}`,{
                     parseResponse: JSON.parse
                 })
-                
                 // @ts-ignore
                 this.products = resp
                 

@@ -92,6 +92,7 @@ export type Product = {
   variants: ProductVariant[];
   images: Image[];
   isHidden?: boolean;
+  Route: string;
 };
 
 export type ProductOption = {
