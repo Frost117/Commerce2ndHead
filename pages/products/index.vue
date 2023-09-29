@@ -6,7 +6,7 @@
             v-for="product in products"
             :key="product.id"
             :Name="product.Name"
-            @click="() => viewProduct(product.Route.Path)"
+            @click="() => viewProduct(getProductById(product.id))"
             />
 
 
@@ -22,6 +22,7 @@ import { storeToRefs } from 'pinia';
 
 const productsStore = useProductsStore();
 const { products } = storeToRefs(productsStore)
+const { getProductById } = storeToRefs(productsStore)
 
 async function loadNextPage() {
     productsStore.nextPage();
@@ -31,8 +32,18 @@ async function loadPreviousPage() {
     productsStore.previousPage();
 }
 
-async function viewProduct(productUrl){    
-    await navigateTo(`products${productUrl}`)
+
+async function viewProduct(productUrl){
+    
+    await navigateTo({
+        path: `products${productUrl.Route.Path}`,
+
+        query: {
+            name: productUrl.Name,
+            shortDescription: productUrl.Properties.shortDescription
+        }
+    })
+    
 }
 
 

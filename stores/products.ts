@@ -1,8 +1,10 @@
-import { defineStore } from 'pinia';
+import { acceptHMRUpdate, defineStore } from 'pinia';
 import { Product } from 'lib/umbraco/types';
 
 
+
 export const useProductsStore = defineStore('products',{
+    
     state: () => ({
         products:[] as Product[],
         currentPage: 1
@@ -22,7 +24,6 @@ export const useProductsStore = defineStore('products',{
             }
             
         },
-
         nextPage(){
             this.currentPage++;
             this.fetchProducts();
@@ -31,9 +32,19 @@ export const useProductsStore = defineStore('products',{
             this.currentPage--;
             this.fetchProducts();
         }
+    },
+
+    getters:{
+        getProductById: (state) => {
+            return (productId) => state.products.find((product) => product.id === productId)
+        }
     }
 });
 
 export function setupProductsStore() {
     return useProductsStore();
+  }
+
+  if (import.meta.hot) {
+    import.meta.hot.accept(acceptHMRUpdate(useProductsStore, import.meta.hot));
   }
