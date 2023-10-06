@@ -2,14 +2,17 @@
     <main>
         <h1>Here are products.... Finally</h1>
 
+        <div class="container mx-auto">
+
             <Products 
             v-for="product in products"
-            :key="product.id"
-            :Name="product.Name"
-            @click="() => viewProduct(getProductById(product.id))"
+            :id=product.id
+            :name=product.Name
+            :properties=product.Properties
+            :images=product.Properties.images
             />
 
-
+        </div>
         <button @click="loadPreviousPage">Load Previous Page</button>
 
         <button @click="loadNextPage">Load Next Page</button>
@@ -22,7 +25,7 @@ import { storeToRefs } from 'pinia';
 
 const productsStore = useProductsStore();
 const { products } = storeToRefs(productsStore)
-const { getProductById } = storeToRefs(productsStore)
+
 
 async function loadNextPage() {
     productsStore.nextPage();
@@ -31,23 +34,6 @@ async function loadNextPage() {
 async function loadPreviousPage() {
     productsStore.previousPage();
 }
-
-
-async function viewProduct(productUrl){
-    
-    await navigateTo({
-        path: `products${productUrl.Route.Path}`,
-
-        query: {
-            name: productUrl.Name,
-            shortDescription: productUrl.Properties.shortDescription
-        }
-    })
-    
-}
-
-
-
 
 </script>
 

@@ -33,12 +33,6 @@ export const useProductsStore = defineStore('products',{
             this.fetchProducts();
         }
     },
-
-    getters:{
-        getProductById: (state) => {
-            return (productId) => state.products.find((product) => product.id === productId)
-        }
-    }
 });
 
 export function setupProductsStore() {
