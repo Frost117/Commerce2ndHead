@@ -1,5 +1,5 @@
 <template>
-    <div id="content-body" class="flex container mx-auto">
+    <main id="content-body" class="flex container mx-auto">
         <!--Left sidebar-->
         <div id="sidebarwrap" class="w-2/5">
             <div id="categories" class="pb-10">
@@ -42,10 +42,12 @@
             />
 
         </div>
-        <!-- <button @click="loadPreviousPage">Load Previous Page</button>
+        
+        <button @click="loadPreviousPage">Load Previous Page</button>
 
-        <button @click="loadNextPage">Load Next Page</button> -->
-    </div>
+        <button @click="loadNextPage">Load Next Page</button>
+        
+    </main>
 </template>
 
 <script setup lang="ts">
@@ -54,15 +56,15 @@ import { storeToRefs } from 'pinia';
 const productsStore = useProductsStore();
 const { products } = storeToRefs(productsStore)
 
-/*
-export async function loadNextPage() {
+
+function loadNextPage() {
     productsStore.nextPage();
 }
 
-export async function loadPreviousPage() {
+function loadPreviousPage() {
     productsStore.previousPage();
 }
-*/
+
 
 </script>
 
