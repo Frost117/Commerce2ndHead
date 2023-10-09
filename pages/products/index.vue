@@ -13,11 +13,11 @@
             />
 
         </div>
-        <!--
+        
         <button @click="loadPreviousPage">Load Previous Page</button>
 
         <button @click="loadNextPage">Load Next Page</button>
-            -->
+        
     </main>
 </template>
 
@@ -27,15 +27,15 @@ import { storeToRefs } from 'pinia';
 const productsStore = useProductsStore();
 const { products } = storeToRefs(productsStore)
 
-/*
-export async function loadNextPage() {
+
+function loadNextPage() {
     productsStore.nextPage();
 }
 
-export async function loadPreviousPage() {
+function loadPreviousPage() {
     productsStore.previousPage();
 }
-*/
+
 
 </script>
 
