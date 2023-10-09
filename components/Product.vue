@@ -1,9 +1,10 @@
 <template>            
     <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href="#">
-            <div v-for="(image, index) in images" :key="index">
-                <img class="p-8 rounded-t-lg" v-bind:src="'https://commerceheadless.euwest01.umbraco.io' + image.Url" alt="product image" />
-            </div>
+            <HeroImage 
+            v-for="image in heroImage"
+            :Url=image.Url
+            />
         </a>
         <div class="px-5 pb-5">
             <a href="#">
@@ -12,9 +13,9 @@
                 </h5>
             </a>
             
-            <p></p>
+            
             <div class="flex items-center justify-between">
-                {{ properties.shortDescription }}
+                <p class="text-white">{{ properties.shortDescription }}</p>
                 <span class="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
                 <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
             </div>
@@ -32,7 +33,7 @@ import { Properties, Image } from 'lib/umbraco/types';
 const props = defineProps<{
     name: string,
     properties: Properties,
-    images: Image
+    heroImage: Image,
 }>()
 
 </script>

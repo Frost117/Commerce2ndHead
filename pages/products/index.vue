@@ -4,19 +4,20 @@
 
         <div class="container mx-auto">
 
-            <Products 
-            v-for="product in products"
-            :id=product.id
-            :name=product.Name
-            :properties=product.Properties
-            :images=product.Properties.images
+            <Product 
+                v-for="product in products"
+                :id=product.id
+                :name=product.Name
+                :properties=product.Properties
+                :heroImage=product.Properties.heroImage
             />
 
         </div>
+        <!--
         <button @click="loadPreviousPage">Load Previous Page</button>
 
         <button @click="loadNextPage">Load Next Page</button>
-
+            -->
     </main>
 </template>
 
@@ -26,14 +27,15 @@ import { storeToRefs } from 'pinia';
 const productsStore = useProductsStore();
 const { products } = storeToRefs(productsStore)
 
-
-async function loadNextPage() {
+/*
+export async function loadNextPage() {
     productsStore.nextPage();
 }
 
-async function loadPreviousPage() {
+export async function loadPreviousPage() {
     productsStore.previousPage();
 }
+*/
 
 </script>
 

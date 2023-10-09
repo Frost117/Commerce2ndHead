@@ -1,4 +1,9 @@
-export interface Product {
+export interface Products {
+  items: Product[];
+  total: number;
+ }
+ 
+ export interface Product {
   contentType: ContentType;
   createDate:  Date;
   cultures:    Cultures;
@@ -18,12 +23,13 @@ export interface Product {
  
  export interface Properties {
   bgColor:          BgColor | null;
-  images:           Image[] | null;
+  heroImage:        Image[];
+  images:           Image[];
   longDescription:  LongDescription | null;
-  metaDescription:  null;
-  metaTitle:        null;
-  price:            Price | null;
-  shortDescription: null | string;
+  metaDescription:  string;
+  metaTitle:        string;
+  price:            Price;
+  shortDescription: string;
   sku:              string;
   stock:            number;
   tags:             string[] | null;
@@ -39,20 +45,44 @@ export interface Product {
  }
  
  export interface Image {
-  bytes:      number;
-  crops:      any[];
-  extension:  Extension;
-  focalPoint: null;
-  height:     number;
-  id:         string;
-  mediaType:  MediaType;
-  name:       string;
-  properties: Cultures;
-  url:        string;
-  width:      number;
+  Bytes:      number;
+  Crops:      Crop[];
+  Extension:  string;
+  FocalPoint: FocalPoint;
+  Height:     number;
+  Id:         string;
+  MediaType:  string;
+  Name:       string;
+  Properties: Cultures;
+  Url:        string;
+  Width:      number;
  }
  
+ export interface FocalPoint{
+  left: number;
+  top: number;
+ }
+
+ export interface Crop {
+  alias:       Alias;
+  coordinates: Coordinate[];
+  height:      number;
+  width:       number;
+ }
+ 
+ export interface Coordinate {
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+ }
+
+ export enum Alias {
+  Hero = "hero",
+ }
+
  export enum Extension {
+  Jpg = "jpg",
   PNG = "png",
  }
  
@@ -109,9 +139,8 @@ export interface Product {
  }
  
  export interface Attributes {
-  age?:   string;
-  color?: string;
-  size?:  string;
+  color: string;
+  size?: string;
  }
  
  export interface Route {

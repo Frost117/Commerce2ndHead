@@ -6,11 +6,12 @@
         <div class="featured">
             <h2>Check some of our featured products</h2>
             <div class="featured-products">
-                <Products 
-                v-for="product in products"
-                :key="product.id"
-                :name="product.name"
-                :properties="product.properties"
+                <Product 
+                    v-for="product in products"
+                    :id=product.id
+                    :name=product.Name
+                    :properties=product.Properties
+                    :heroImage= product.Properties.heroImage
                 />
             </div>
         </div>
