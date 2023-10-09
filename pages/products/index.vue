@@ -28,22 +28,23 @@
                     />
                 </div>
             </div>
-        </div>
-<!--         
+        </div>     
         <h1 class="text-2xl">Products</h1>
 
-            <Products 
-            v-for="product in products"
-            :key="product.id"
-            :Name="product.Name"
-            @click="() => viewProduct(product.Route.Path)"
+        <div class="container mx-auto">
+
+            <Product 
+                v-for="product in products"
+                :id=product.id
+                :name=product.Name
+                :properties=product.Properties
+                :heroImage=product.Properties.heroImage
             />
 
-
-        <button @click="loadPreviousPage">Load Previous Page</button>
+        </div>
+        <!-- <button @click="loadPreviousPage">Load Previous Page</button>
 
         <button @click="loadNextPage">Load Next Page</button> -->
-
     </div>
 </template>
 
@@ -53,19 +54,16 @@ import { storeToRefs } from 'pinia';
 const productsStore = useProductsStore();
 const { products } = storeToRefs(productsStore)
 
-async function loadNextPage() {
+/*
+export async function loadNextPage() {
     productsStore.nextPage();
 }
 
-async function loadPreviousPage() {
+export async function loadPreviousPage() {
     productsStore.previousPage();
 }
+*/
 
-async function viewProduct(productUrl){    
-    await navigateTo(`products${productUrl}`)
-}
-
-console.log(products)
 </script>
 
 <style scoped>

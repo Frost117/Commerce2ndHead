@@ -3,10 +3,11 @@
 </script>
 
 <template>
-  <main>
+<main>
   <div>
-    {{ $route.params.id }}
-    {{ $route.params.name }}
+
+    {{ $route.query.name }} <br />
+    {{ $route.query.shortDescription }}
   </div>
 </main>
 </template>
