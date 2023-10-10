@@ -27,7 +27,6 @@
     }
     main {
         min-height: 100vh;
-        background-image: linear-gradient(to right top, #a40cf5, #6e2dd2, #4031ab, #1d2b80, #0c2154);
     }
 
     main > h1, h3 {
