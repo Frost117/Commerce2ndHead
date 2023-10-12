@@ -20,12 +20,13 @@
             <h1 class="text-2xl">Products</h1>
             <div class="featured">
                 <div class="featured-products flex flex-wrap">
-                    <div v-for="product in products">
+                    <div v-for="product in products" :key="product.Id">
                     <Product class="m-2"
-                        :id=product.id
+                        :id=product.Id
                         :name=product.Name
                         :properties=product.Properties
-                        :heroImage=product.Properties.heroImage
+                        :image=product.Properties.heroImage
+                        :route=product.Route.Path
                     />
                     </div>
                 </div>

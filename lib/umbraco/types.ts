@@ -7,10 +7,10 @@ export interface Products {
   contentType: ContentType;
   createDate:  Date;
   cultures:    Cultures;
-  id:          string;
+  Id:          string;
   Name:        string;
   Properties:  Properties;
-  route:       Route;
+  Route:       Route;
   updateDate:  Date;
  }
  
@@ -144,7 +144,7 @@ export interface Products {
  }
  
  export interface Route {
-  path:      string;
+  Path:      string;
   startItem: StartItem;
  }
  
