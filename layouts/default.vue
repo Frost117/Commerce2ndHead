@@ -32,7 +32,7 @@
         </div>
       </header>
       <!--Output-->
-      <div>
+      <div id="main">
         <slot />
       </div>
 
@@ -107,6 +107,10 @@ productsStore.fetchProducts();
         margin-bottom: 0;
         font-size: 14px;
         font-style: italic;
+    }
+
+    #main {
+        background-image: linear-gradient(to right top, #a40cf5, #6e2dd2, #4031ab, #1d2b80, #0c2154);
     }
     
 </style>

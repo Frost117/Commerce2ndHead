@@ -1,8 +1,8 @@
-import { defineStore } from 'pinia';
+import { acceptHMRUpdate, defineStore } from 'pinia';
 import { Product } from 'lib/umbraco/types';
 
-
 export const useProductsStore = defineStore('products',{
+    
     state: () => ({
         products:[] as Product[],
         currentPage: 1
@@ -11,19 +11,15 @@ export const useProductsStore = defineStore('products',{
     actions:{
         async fetchProducts(){
             try{
-                const resp = await $fetch(`https://commerceheadless.euwest01.umbraco.io/api/v1/products?page=${this.currentPage}`,{
-                    parseResponse: JSON.parse
-                })
+                const { products } = await $fetch(`/api/products?page=${this.currentPage}`)
                 
-                // @ts-ignore
-                this.products = resp
-                
-            }catch(err) {
+                this.products = products
+            }
+            catch(err){
                 console.log(err)
             }
-            
         },
-
+                    
         nextPage(){
             this.currentPage++;
             this.fetchProducts();
@@ -32,9 +28,13 @@ export const useProductsStore = defineStore('products',{
             this.currentPage--;
             this.fetchProducts();
         }
-    }
+    },
 });
 
 export function setupProductsStore() {
     return useProductsStore();
+  }
+
+  if (import.meta.hot) {
+    import.meta.hot.accept(acceptHMRUpdate(useProductsStore, import.meta.hot));
   }

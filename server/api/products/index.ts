@@ -1,6 +1,15 @@
-/*
 export default defineEventHandler(async (event) => {
-    const { data } = await $fetch("https://icanhazdadjoke.com/");
-    return data;
+
+    const runtimeConfig = useRuntimeConfig()
+    const params = getQuery(event)
+
+    const response = await $fetch(`${runtimeConfig.baseUrl}?page=${params.page}`, {
+        parseResponse: JSON.parse
+    })
+
+    const data = await response
+
+    return {
+        products: data
+    }
 });
-*/
