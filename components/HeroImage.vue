@@ -6,10 +6,14 @@
 
 <script setup lang="ts">
 
-
-const props = defineProps<{
-    Url: string
-}>()
+const props = defineProps({
+    Image: {
+        type: Object,
+    },
+    Url:{
+        type: String
+    }
+})
 
 </script>
 

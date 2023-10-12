@@ -1,10 +1,12 @@
 <template>            
     <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href="#">
-            <HeroImage 
-            v-for="image in heroImage"
-            :Url=image.Url
-            />
+            <div v-for="image in heroImage" >
+                <HeroImage 
+                :image="image"
+                :Url=image.Url
+                />
+            </div>
         </a>
         <div class="px-5 pb-5">
             <a href="#">
@@ -28,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { Properties, Image } from 'lib/umbraco/types';
+import { Properties, Image } from '@/lib/umbraco/types';
 
 const props = defineProps<{
     name: string,
