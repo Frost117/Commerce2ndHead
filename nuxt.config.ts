@@ -19,6 +19,10 @@ export default defineNuxtConfig({
   imports:{
     dirs:['stores']
   },
+  runtimeConfig:{
+    baseUrl:"https://commerceheadless.euwest01.umbraco.io/api/v1/products",
+    appSecret: "3vC9B7sesuzXflUgYP3Z1lbGdzeEgDV8"
+  },
   pinia:{
     autoImports: [
       // automatically imports `defineStore`
