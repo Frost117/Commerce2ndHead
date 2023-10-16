@@ -12,6 +12,7 @@ export interface Products {
   Properties:  Properties;
   Route:       Route;
   updateDate:  Date;
+  path:        string;  
  }
  
  export enum ContentType {
