@@ -4,8 +4,9 @@ import { Product } from 'lib/umbraco/types';
 export const useProductsStore = defineStore('products',{
     
     state: () => ({
+        route: useRoute(),
         products:[] as Product[],
-        currentPage: 1
+        currentPage: 1,
     }),
 
     actions:{
@@ -18,8 +19,8 @@ export const useProductsStore = defineStore('products',{
             catch(err){
                 console.log(err)
             }
-        },
-                    
+        },        
+        
         nextPage(){
             this.currentPage++;
             this.fetchProducts();

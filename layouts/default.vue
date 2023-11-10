@@ -44,7 +44,12 @@
 import { useProductsStore } from '../stores/products';
 
 const productsStore = useProductsStore()
-productsStore.fetchProducts();
+
+async function retrieveProducts() {
+    await productsStore.fetchProducts();
+}
+
+await retrieveProducts()
 
 </script>
 

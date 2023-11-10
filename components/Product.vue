@@ -7,11 +7,11 @@
             />
         </div>
         <div class="px-5 pb-5">
-            <nuxt-link :to="`products${path}`">
+            
                 <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
                     {{ name }}
                 </h5>
-            </nuxt-link>
+            
             
             
             <div class="flex items-center justify-between mb-2">
@@ -46,6 +46,7 @@ const props = defineProps<{
     image: Image[],
     path: string    
 }>()
+
 
 </script>
 

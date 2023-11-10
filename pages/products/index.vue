@@ -6,9 +6,9 @@
                 <h4 class="text-2xl text-slate-50 font-semibold mb-2">Categories</h4>
                 <ul class="list-none">
                     <li><NuxtLink class="text-base text-slate-50 hover:underline" to="/products">All products</NuxtLink></li>
-                    <li><NuxtLink class="text-base text-slate-50 hover:underline">Hoodies</NuxtLink></li>
-                    <li><NuxtLink class="text-base text-slate-50 hover:underline">Accessories</NuxtLink></li>
-                    <li><NuxtLink class="text-base text-slate-50 hover:underline">Other swag</NuxtLink></li>
+                    <li><NuxtLink class="text-base text-slate-50 hover:underline" to="/products">Hoodies</NuxtLink></li>
+                    <li><NuxtLink class="text-base text-slate-50 hover:underline" to="/products">Accessories</NuxtLink></li>
+                    <li><NuxtLink class="text-base text-slate-50 hover:underline" to="/products">Other swag</NuxtLink></li>
                 </ul>
             </div>
             <div id="featured">
