@@ -26,7 +26,7 @@
                                 :name=product.Name
                                 :properties=product.Properties
                                 :image=product.Properties.heroImage
-                                :path=product.Route.Path                            
+                                :path=product.Route.Path
                             />
                     </div>
                 </div>
