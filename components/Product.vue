@@ -39,8 +39,6 @@
 <script setup lang="ts">
 import { type Image, type Properties } from '@/lib/umbraco/types';
 
-const router = useRouter();
-
 const props = defineProps<{
     id: string,
     name: string,

@@ -1,11 +1,11 @@
 import { acceptHMRUpdate, defineStore } from 'pinia';
-import { Product } from 'lib/umbraco/types';
+import { type Product } from '@/lib/umbraco/types';
 import { useProductsStore } from './products';
 
 export const useProductStore = defineStore('product',{
     
     state: () => ({
-        id: Number,
+        id: String,
         product:[] as Product[],
     }),
 

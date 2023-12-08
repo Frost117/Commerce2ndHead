@@ -6,7 +6,7 @@
                 <!-- Left -->
                 <div id="left-menu">
                     <div class="brand-container">
-                        <p class="logo-text_main">BlackOps Store 🥷</p>
+                        <p class="logo-text_main">BlackOps Store</p>
                         <p class="logo-text_slogan">Just restart it!</p>
                         <!-- <img class="logo" src="../assets/blackops-store.png" /> -->
                     </div>
