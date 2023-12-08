@@ -5,28 +5,14 @@
             <div id="width-wrapper">
                 <!-- Left -->
                 <div id="left-menu">
-                    <div class="brand-container">
-                        <p class="logo-text_main">BlackOps Store</p>
-                        <p class="logo-text_slogan">Just restart it!</p>
-                        <!-- <img class="logo" src="../assets/blackops-store.png" /> -->
-                    </div>
                    
-                        <nav>
-                            <ul>
-                                <li class="nav-item"><NuxtLink to="/">Home</NuxtLink></li>
-                                <li class="nav-item"><NuxtLink to="/products">Products</NuxtLink></li>
-                                <li class="nav-item"><NuxtLink to="/contact-us">Contact us</NuxtLink></li>
-                                <li class="nav-item"><NuxtLink to="/terms-and-conditions">Terms &amp; conditions</NuxtLink></li>
-                                <li class="nav-item"><NuxtLink to="/about-us">About us</NuxtLink></li>
-                            </ul>
-                        </nav>
-                        
-                </div>
-                <!-- Right -->
-                <div id="right-menu">
-                    <div class="search-container">
-                        <p>🔎</p>
-                    </div>
+                    <nav>
+                        <ul>
+                            <li class="nav-item"><NuxtLink to="/">Home</NuxtLink></li>
+                            <li class="nav-item"><NuxtLink to="/products">Products</NuxtLink></li>
+
+                        </ul>
+                    </nav>  
                 </div>
             </div>
         </div>

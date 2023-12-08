@@ -4,7 +4,7 @@
         <h3>Your supplier for Umbraco Swag and other goods!</h3>
 
         <div class="featured">
-            <h2>Check some of our featured products</h2>
+            
             <div class="featured-products">
 
             </div>
