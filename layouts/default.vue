@@ -1,28 +1,19 @@
 <template>
-    <div>
-      <header>
-        <div class="menu-container">
-            <div id="width-wrapper">
+      <header class="bg-black">
                 <!-- Left -->
-                <div id="left-menu">
-                   
-                    <nav>
-                        <ul>
-                            <li class="nav-item"><NuxtLink to="/">Home</NuxtLink></li>
-                            <li class="nav-item"><NuxtLink to="/products">Products</NuxtLink></li>
-
-                        </ul>
-                    </nav>  
-                </div>
-            </div>
-        </div>
+            <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+                <ul class="list-style-none mr-auto flex flex-col pl-0 lg:flex-row">
+                    <li class="mb-4 lg:mb-0 lg:pr-2"><NuxtLink to="/">Home</NuxtLink></li>
+                    <li class="nmb-4 lg:mb-0 lg:pr-2"><NuxtLink to="/products">Collections</NuxtLink></li>
+                </ul>
+            </nav>  
+        
       </header>
       <!--Output-->
-      <div id="main">
+      
+      
         <slot />
-      </div>
-
-    </div>
+      
   </template>
 
 
@@ -40,68 +31,7 @@ await retrieveProducts()
 </script>
 
 <style lang="css">
-    a {
-        color: #0c2154;
-        text-decoration: none;
-        font-size: 22px;
-        font-weight: 500;
-    }
 
-    ul {
-        list-style: none;
-        margin: 0
-    }
 
-    #width-wrapper {
-        width: 75%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    #left-menu {
-        display: flex;
-        align-items: center;
-    }
-
-    .menu-container {
-        background-color:white;
-        color: #0c2154;
-        box-shadow: 1px 1px 1px black;
-        padding: 10px 0;
-    }
-
-    .brand-container {
-        max-width: 100%;
-        font-family: 'Roboto', sans-serif;
-        font-weight: bold;
-    }
-
-    .nav-item {
-        display: inline-block;
-        margin-right: 12px;
-    }
-    
-    .logo {
-        max-width: 100%;
-        height: 145px;
-    }
-
-    .logo-text_main {
-        margin-bottom: 0;
-        margin-top: 0;
-        font-size: 20px;
-    }
-
-    .logo-text_slogan {
-        margin-top: 0;
-        margin-bottom: 0;
-        font-size: 14px;
-        font-style: italic;
-    }
-
-    #main {
-        background-image: linear-gradient(to right top, #a40cf5, #6e2dd2, #4031ab, #1d2b80, #0c2154);
-    }
     
 </style>

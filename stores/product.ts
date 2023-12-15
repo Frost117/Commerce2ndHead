@@ -1,6 +1,6 @@
-import { acceptHMRUpdate, defineStore } from 'pinia';
+import { defineStore } from 'pinia';
 import { type Product } from '@/lib/umbraco/types';
-import { useProductsStore } from './products';
+
 
 export const useProductStore = defineStore('product',{
     
