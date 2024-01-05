@@ -7,14 +7,15 @@
 
         <br />
 
-        <div v-for="products in page.properties.productHighlight" :key="product.Id">
+        <div v-for="products in page.properties.productHighlight">
             
-            <div v-for="product in products">     
+            <div v-for="product in products" :key="product.Id">     
                 
                 <HighlightProduct
                     :id=product.content.id
                     :name=product.content.properties.productName
-                    :route=product.content.properties.productLink.route.path 
+                    :route=product.content.properties.productLink.route.path
+                    :image=product.content.properties.productHighlightImage
                 />
             </div>
             

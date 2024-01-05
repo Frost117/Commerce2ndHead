@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img v-bind:src="'https://commerceheadless.euwest01.umbraco.io/' + Url" loading="lazy">
+        <img v-bind:src="'https://commerceheadless.euwest01.umbraco.io' + Url" loading="lazy">
     </div>
 </template>
 
