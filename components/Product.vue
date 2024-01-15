@@ -3,7 +3,7 @@
         <div v-for="img in image" >
             <HeroImage 
             :image="img"
-            :Url=img.Url
+            :url=img.Url
             />
         </div>
         <div class="px-5 pb-5">

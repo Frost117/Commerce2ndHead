@@ -1,15 +1,8 @@
 <template>
-    <div class="container mx-auto">
-                
-                            
-        <h1>Welcome to the BlackOps Commerce Store!</h1>
-        <h3>Your supplier for Umbraco Swag and other goods!</h3>
-
-        <br />
-
+    <div>
         <div v-for="products in page.properties.productHighlight">
             
-            <div v-for="product in products" :key="product.Id">     
+            <div v-for="product in products" :key="product.content.id">     
                 
                 <HighlightProduct
                     :id=product.content.id
@@ -31,8 +24,6 @@
 
 <script setup lang="ts">
 const { highlightedProducts } = useProduct();
-
 const page = await highlightedProducts('home')
-
 
 </script>
