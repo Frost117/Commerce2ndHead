@@ -9,6 +9,7 @@
                     :name=product.content.properties.productName
                     :route=product.content.properties.productLink.route.path
                     :image=product.content.properties.productHighlightImage
+                    :description=product.content.properties.productDescription
                 />
             </div>
             

@@ -13,8 +13,13 @@
             <div v-if="(content as any).properties.longDescription && (content as any).properties.longDescription.markup">
                 <div v-dompurify-html="(content as any).properties.longDescription.markup" />
             </div>
-            <p v-if="(content as any).properties.price && (content as any).properties.price.withTax">
+            <p 
+            v-if="(content as any).properties.price && (content as any).properties.price.withTax">
                 {{ (content as any).properties.price.withTax }} €
+            </p>
+            <p 
+            v-else="(content as any).properties.price && (content as any).properties.price.withTax">
+                Out of stock
             </p>
             <button 
             type="button" 

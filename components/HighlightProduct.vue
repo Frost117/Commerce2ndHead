@@ -15,7 +15,7 @@
                 {{ name }}
             </h3>
             <p class="mt-2 text-sm text-gray-200">
-              +Some description text. Some dummy text here. Welcome to Sling Academy.
+              {{description}}
             </p>
           </div>
         </NuxtLink>
@@ -26,20 +26,17 @@
 
 <script setup lang="ts">
 
-const props = defineProps({
-    image: {
-        type: Array,
-    },
-    route:{
-        type: String
-    },
-    id:{
-      type: String},
-    name:{
-      type: String,
-    } 
+import { type ProductHighlightImage, type Properties } from '@/lib/umbraco/types';
 
-})
+const props = defineProps<{
+    id: string,
+    image: ProductHighlightImage,
+    name: ProductHighlightImage["name"],
+    description: Properties["shortDescription"],
+    route: string,
+}>()
+
+
 
 
 </script>

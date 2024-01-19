@@ -4,7 +4,6 @@ import { type Product } from '@/lib/umbraco/types';
 export const useProductsStore = defineStore('products',{
     
     state: () => ({
-        route: useRoute(),
         products:[] as Product[],
         currentPage: 1,
     }),

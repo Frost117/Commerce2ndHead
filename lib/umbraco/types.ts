@@ -9,7 +9,7 @@ export interface Products {
   cultures:    Cultures;
   Id:          string;
   Name:        string;
-  Properties:  Properties;
+  properties:  Properties;
   Route:       Route;
   updateDate:  Date;
   path:        string;  
@@ -30,6 +30,7 @@ export interface Products {
   metaDescription:  string;
   metaTitle:        string;
   price:            Price;
+  productHighlight: ProductHighlight;
   shortDescription: string;
   sku:              string;
   stock:            number;
@@ -40,6 +41,53 @@ export interface Products {
   variants:         Variants | null;
  }
  
+ export interface ProductHighlight {
+  items: Item[];
+ }
+
+ export interface Item {
+  content:  Content;
+  settings: null;
+ }
+
+ export interface Content {
+  contentType: string;
+  id:          string;
+  properties:  ContentProperties;
+ }
+
+ export interface ContentProperties {
+  productDescription:    string;
+  productHighlightImage: ProductHighlightImage[];
+  productLink:           ProductLink;
+  productName:           string;
+ }
+
+ export interface ProductHighlightImage {
+  bytes:      number;
+  crops:      Crop[];
+  extension:  string;
+  focalPoint: FocalPoint | null;
+  height:     number;
+  id:         string;
+  mediaType:  string;
+  name:       string;
+  properties: Cultures;
+  url:        string;
+  width:      number;
+ }
+
+ export interface ProductLink {
+  contentType: string;
+  createDate:  Date;
+  id:          string;
+  name:        string;
+  properties:  Cultures;
+  route:       Route;
+  updateDate:  Date;
+ }
+ 
+
  export interface BgColor {
   color: string;
   label: string;
@@ -145,7 +193,7 @@ export interface Products {
  }
  
  export interface Route {
-  Path:      string;
+  path:      string;
   startItem: StartItem;
  }
  

@@ -3,12 +3,17 @@
 
         <div id="sidebarwrap" class="w-1/6">
                     <div id="categories" class="pb-10">
+                        
                         <h4 class="text-2xl text-slate-50 font-semibold mb-2">Categories</h4>
                         <ul class="list-none">
-                            <li><NuxtLink class="text-base text-slate-50 hover:underline" to="/products">All products</NuxtLink></li>
-                            <li><NuxtLink class="text-base text-slate-50 hover:underline" to="/products">Hoodies</NuxtLink></li>
-                            <li><NuxtLink class="text-base text-slate-50 hover:underline" to="/products">Accessories</NuxtLink></li>
-                            <li><NuxtLink class="text-base text-slate-50 hover:underline" to="/products">Other swag</NuxtLink></li>
+                            <li>
+                                <input type="checkbox" id="all" value="" v-model="selectedTags" class="mr-2">
+                                <label for="all">All products</label>
+                            </li>
+                            <li v-for="tag in uniqueTags" :key="tag">
+                                <input type="checkbox" :id="tag" :value="tag" v-model="selectedTags" class="mr-2">
+                                <label :for="tag">{{ tag }}</label>
+                            </li>
                         </ul>
                     </div>
                     <div id="featured">
@@ -18,11 +23,15 @@
 
         <!--Main content-->
         <div class="main-content w-full">
+
             <h1 class="text-2xl">Products</h1>
-            <div class="featured">
-                <div class="featured-products flex flex-wrap">
-                    <div v-for="product in products" :key="product.Id">
-                        <Product class="m-2"
+
+            
+                <div class="grid grid-cols-3">
+                    <div 
+                    class="col-span-1"
+                    v-for="product in filteredProducts" :key="product.Id">
+                        <Product
                             :id=product.Id
                             :name=product.Name
                             :properties=product.Properties
@@ -31,7 +40,7 @@
                         />
                     </div>
                 </div>
-            </div>
+            
             
             <Button direction="previous" @click="loadPreviousPage()"/>
             <Button direction="next" @click="loadNextPage()"/>
@@ -42,11 +51,15 @@
 </template>
 
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
 
 const productsStore = useProductsStore();
-const { products } = storeToRefs(productsStore)
 
+
+const {
+  selectedTags,
+  uniqueTags,
+  filteredProducts,
+} = useProducts();
 
 function loadNextPage() {
     productsStore.nextPage();
