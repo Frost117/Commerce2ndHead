@@ -25,7 +25,6 @@ const productsStore = useProductsStore()
 async function retrieveProducts() {
     await productsStore.fetchProducts();
 }
-
 await retrieveProducts()
 
 </script>

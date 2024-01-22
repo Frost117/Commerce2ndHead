@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bg-cover bg-center">
         <img 
         class="rounded-md"
         :src="'https://commerceheadless.euwest01.umbraco.io/' + url" 

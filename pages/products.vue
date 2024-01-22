@@ -2,34 +2,30 @@
     <main id="content-body" class="flex container mx-auto">
 
         <div id="sidebarwrap" class="w-1/6">
-                    <div id="categories" class="pb-10">
-                        
-                        <h4 class="text-2xl text-slate-50 font-semibold mb-2">Categories</h4>
-                        <ul class="list-none">
-                            <li>
-                                <input type="checkbox" id="all" value="" v-model="selectedTags" class="mr-2">
-                                <label for="all">All products</label>
-                            </li>
-                            <li v-for="tag in uniqueTags" :key="tag">
-                                <input type="checkbox" :id="tag" :value="tag" v-model="selectedTags" class="mr-2">
-                                <label :for="tag">{{ tag }}</label>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="featured">
-                        <h4 class="text-2xl text-slate-50 font-semibold mb-2">Featured</h4>
-                    </div>
+            <div id="categories" class="pb-10">
+                
+                <h4 class="text-2xl text-slate-50 font-semibold mb-2">Categories</h4>
+                <ul class="list-none">
+                    <li>
+                        <input type="checkbox" id="all" value="" v-model="selectedTags" class="mr-2">
+                        <label for="all">All products</label>
+                    </li>
+                    <li v-for="tag in uniqueTags" :key="tag">
+                        <input type="checkbox" :id="tag" :value="tag" v-model="selectedTags" class="mr-2">
+                        <label :for="tag">{{ tag }}</label>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <!--Main content-->
         <div class="main-content w-full">
 
-            <h1 class="text-2xl">Products</h1>
+            <h1 class="text-2xl text-slate-50 font-semibold mb-2">Products</h1>
 
             
                 <div class="grid grid-cols-3">
                     <div 
-                    class="col-span-1"
                     v-for="product in filteredProducts" :key="product.Id">
                         <Product
                             :id=product.Id

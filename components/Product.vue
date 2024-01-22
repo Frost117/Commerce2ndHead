@@ -5,7 +5,7 @@
             <HeroImage
             :image="img"
             :url=img.Url
-            class="h-96"
+            class="h-full"
             />
             
         </div>
