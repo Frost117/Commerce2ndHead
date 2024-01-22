@@ -5,3 +5,16 @@
             </main>
         </NuxtLayout>
 </template>
+
+<script setup lang="ts">
+
+const customerToken = useCookie('customerToken');
+
+if (!customerToken.value) {
+  const newGuid = useGuid();
+customerToken.value = newGuid();
+}
+
+console.log(customerToken.value);
+
+</script>
