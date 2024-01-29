@@ -18,12 +18,15 @@
 
 
 <script setup lang="ts">
-import { useProductsStore } from '../stores/products';
+import { useProductsStore } from '@/stores/products';
+import { useCartStore } from '@/stores/cart';
 
+const cartStore = useCartStore()
 const productsStore = useProductsStore()
 
 async function retrieveProducts() {
     await productsStore.fetchProducts();
+    await cartStore.initCart();
 }
 await retrieveProducts()
 

@@ -12,17 +12,14 @@
             <h1 class="text-2xl">{{ (content as any).name }}</h1>
             <div v-if="(content as any).properties.longDescription && (content as any).properties.longDescription.markup">
                 <div v-dompurify-html="(content as any).properties.longDescription.markup" />
+                
             </div>
-            <p 
+            <div 
             v-if="(content as any).properties.price && (content as any).properties.price.withTax">
-                {{ (content as any).properties.price.withTax }} €
-            </p>
-            <p 
-            v-else="(content as any).properties.price && (content as any).properties.price.withTax">
-                Out of stock
-            </p>
-            <button 
+                <p>{{ (content as any).properties.price.withTax }} €</p>
+                <button
             type="button" 
+            @click="cartStore.setCart(orderId, customerRef)"
             class="
             text-white 
             bg-gradient-to-br 
@@ -45,16 +42,29 @@
             w-1/2">
             Add to cart
             </button>
+            </div>
+            <p 
+            v-else="(content as any).properties.price && (content as any).properties.price.withTax">
+                Out of stock
+            </p>
+            
         </div>
         
     </main>
 </template>
 
 <script setup lang="ts">
+import { useCartStore } from '@/stores/cart';
+
+const cartStore = useCartStore()
 
 const { highlightedProducts } = useProduct();
 const route = useRoute()
 const content = await highlightedProducts( (route as any).params.productSlug )
+
+const orderId = useGuid();
+
+const customerRef = useCookie('customerToken')
 
 </script>
 

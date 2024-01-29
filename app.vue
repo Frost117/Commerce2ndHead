@@ -12,9 +12,9 @@ const customerToken = useCookie('customerToken');
 
 if (!customerToken.value) {
   const newGuid = useGuid();
-customerToken.value = newGuid();
+customerToken.value = "cust_" + newGuid();
 }
 
-console.log(customerToken.value);
+
 
 </script>
