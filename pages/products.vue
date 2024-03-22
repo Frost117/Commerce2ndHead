@@ -24,9 +24,8 @@
             <h1 class="text-2xl text-slate-50 font-semibold mb-2">Products</h1>
 
             
-                <div class="grid grid-cols-3">
-                    <div 
-                    v-for="product in filteredProducts" :key="product.Id">
+                <div class="grid grid-cols-3 gap-4">
+                    <div v-for="product in filteredProducts" :key="product.Id">
                         <Product
                             :id=product.Id
                             :name=product.Name
@@ -50,12 +49,11 @@
 
 const productsStore = useProductsStore();
 
-
 const {
   selectedTags,
   uniqueTags,
   filteredProducts,
-} = useProducts();
+} = useFilters();
 
 function loadNextPage() {
     productsStore.nextPage();

@@ -1,6 +1,6 @@
 import { storeToRefs } from 'pinia';
 
-export function useProducts() {
+export function useFilters() {
 
     const productsStore = useProductsStore();
     const { products } = storeToRefs(productsStore)

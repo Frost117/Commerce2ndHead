@@ -1,7 +1,7 @@
 <template>
     <main id="content-body" class="flex container mx-auto">
 
-        <div v-for="image in (content as any).properties.images" :key="image.id"
+        <div v-for="image in (product as any).properties.images" :key="image.id"
         class="rounded-md bg-white mr-7 w-2/4"
         >
             <HeroImage
@@ -9,17 +9,17 @@
             />
         </div>
         <div class="w-1/4">
-            <h1 class="text-2xl">{{ (content as any).name }}</h1>
-            <div v-if="(content as any).properties.longDescription && (content as any).properties.longDescription.markup">
-                <div v-dompurify-html="(content as any).properties.longDescription.markup" />
+            <h1 class="text-2xl">{{ (product as any).name }}</h1>
+            <div v-if="(product as any).properties.longDescription && (product as any).properties.longDescription.markup">
+                <div v-dompurify-html="(product as any).properties.longDescription.markup" />
                 
             </div>
             <div 
-            v-if="(content as any).properties.price && (content as any).properties.price.withTax">
-                <p>{{ (content as any).properties.price.withTax }} €</p>
+            v-if="(product as any).properties.price && (product as any).properties.price.withTax">
+                <p>{{ (product as any).properties.price.withTax }} €</p>
                 <button
             type="button" 
-            @click="cartStore.setCart(orderId, customerRef)"
+            @click="cartStore.addToCart(product as Product)"
             class="
             text-white 
             bg-gradient-to-br 
@@ -44,7 +44,7 @@
             </button>
             </div>
             <p 
-            v-else="(content as any).properties.price && (content as any).properties.price.withTax">
+            v-else="(product as any).properties.price && (product as any).properties.price.withTax">
                 Out of stock
             </p>
             
@@ -54,14 +54,14 @@
 </template>
 
 <script setup lang="ts">
-import { useCartStore } from '@/stores/cart';
-
-const cartStore = useCartStore()
+import type { Product } from '~/lib/umbraco/types';
 
 const { highlightedProducts } = useProduct();
 const route = useRoute()
-const content = await highlightedProducts( (route as any).params.productSlug )
+const product = await highlightedProducts( (route as any).params.productSlug )
 
+const cartStore = await useCartStore()
+const { cart } = storeToRefs(cartStore)
 const orderId = useGuid();
 
 const customerRef = useCookie('customerToken')

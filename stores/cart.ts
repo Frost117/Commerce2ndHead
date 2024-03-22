@@ -1,17 +1,37 @@
 import { defineStore } from 'pinia';
+import type { Cart } from '@/lib/umbraco/types'; // Import the 'Cart' type from the appropriate module using type-only import
+
 
 export const useCartStore = defineStore('cart', {
 
     state: () => ({
-        cart:[]
+        cart: {} as Cart,
     }),
-    actions: {
-        
-        initCart() {
-            this.cart = [];
-        },
+    
+      persist:{
+        storage: persistedState.localStorage
+      },
 
-        async setCart(orderId, customerRef) {
+      actions: {
+        async addToCart(product: any) {
+          this.cart.orderLines.push(product);         
+          
+          try {
+            const response = await $fetch(`/api/cart/`, {
+              method: "POST",
+              body: {
+                cartNumber: this.cart.cartNumber,
+                cartId: this.cart.id,
+                productReference: product.id
+              }
+            });
+       
+          } catch (error) {
+            console.log(error);
+          }
+        },
+        /*
+        async setCart(orderId: string, customerRef: string) {
             try {
               const response = await fetch(`/api/order`, {
                 method: "POST",
@@ -28,6 +48,16 @@ export const useCartStore = defineStore('cart', {
             catch (err) {
                 console.log(err)
           }
-        }
-    },
+        }*/
+      }
 });
+/*
+cartStore.$subscribe((mutation, state) => {
+  if (!isCallbackTriggered && mutation.type === 'addToCart') {
+    console.log('Added to cart:', state.cart);
+
+    isCallbackTriggered = true;
+  }
+  
+});
+*/

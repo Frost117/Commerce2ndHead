@@ -9,7 +9,7 @@ export interface Products {
   cultures:    Cultures;
   Id:          string;
   Name:        string;
-  properties:  Properties;
+  Properties:  Properties;
   Route:       Route;
   updateDate:  Date;
   path:        string;  
@@ -193,17 +193,89 @@ export interface Products {
  }
  
  export interface Route {
-  path:      string;
+  Path:      string;
   startItem: StartItem;
  }
  
  export interface StartItem {
   id:   string;
-  path: Path;
+  Path: Path;
  }
  
  export enum Path {
   Products = "products",
  }
  
+ export interface Cart {
+  cartNumber:        string;
+  createDate:        Date;
+  currency:          Currency;
+  customerInfo:      CustomerInfo;
+  id:                string;
+  isFinalized:       boolean;
+  languageIsoCode:   string;
+  orderLines:        any[];
+  orderStatus:       OrderStatus;
+  paymentInfo:       Info;
+  shippingInfo:      Info;
+  subtotalPrice:     TotalPrice;
+  taxClass:          OrderStatus;
+  totalPrice:        TotalPrice;
+  totalQuantity:     number;
+  transactionAmount: TransactionAmount;
+  updateDate:        Date;
+ }
+ 
+ export interface Currency {
+  $type: string;
+  code:  string;
+  id:    string;
+ }
+ 
+ export interface CustomerInfo {
+  customerReference: string;
+ }
+ 
+ export interface OrderStatus {
+  $type: string;
+  alias: string;
+  id:    string;
+ }
+ 
+ export interface Info {
+  taxRate:    number;
+  totalPrice: TotalPrice;
+ }
+ 
+ export interface TotalPrice {
+  value: SubtotalPriceValue;
+ }
+ 
+ export interface SubtotalPriceValue {
+  currency:   Currency;
+  formatted:  PurpleFormatted;
+  tax:        number;
+  withTax:    number;
+  withoutTax: number;
+ }
+ 
+ export interface PurpleFormatted {
+  tax:        string;
+  withTax:    string;
+  withoutTax: string;
+ }
+ 
+ export interface TransactionAmount {
+  value: TransactionAmountValue;
+ }
+ 
+ export interface TransactionAmountValue {
+  currency:  Currency;
+  formatted: FluffyFormatted;
+  value:     number;
+ }
+ 
+ export interface FluffyFormatted {
+  value: string;
+ }
  

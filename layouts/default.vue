@@ -6,7 +6,12 @@
                     <li class="mb-4 lg:mb-0 lg:pr-2"><NuxtLink to="/">Home</NuxtLink></li>
                     <li class="nmb-4 lg:mb-0 lg:pr-2"><NuxtLink to="/products">Collections</NuxtLink></li>
                 </ul>
-            </nav>  
+
+                <!-- Right -->
+                <Cart />
+            </nav>
+            
+            
         
       </header>
       <!--Output-->
@@ -19,14 +24,11 @@
 
 <script setup lang="ts">
 import { useProductsStore } from '@/stores/products';
-import { useCartStore } from '@/stores/cart';
 
-const cartStore = useCartStore()
 const productsStore = useProductsStore()
 
 async function retrieveProducts() {
     await productsStore.fetchProducts();
-    await cartStore.initCart();
 }
 await retrieveProducts()
 
