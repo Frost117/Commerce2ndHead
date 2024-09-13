@@ -1,6 +1,10 @@
 <template>
-    <div class="cart">
-      <h2>Cart</h2>
+  <div class="cart">
+
+    <h2>Cart</h2>
+
+    <div v-if="cartStore.initCart === true">
+
       <div v-for="group in groupedItems" :key="group[0].id">
         <h3>{{ group[0].name }} - {{ group[0].price }}</h3>
         <ul>
@@ -9,9 +13,16 @@
           </li>
         </ul>
       </div>
-      <button @click="clearCart">Clear Cart</button>
+
+      <button @click="clearCart">Clear Cart</button>      
     </div>
-  </template>
+
+    <div v-else>
+        no products in cart
+    </div>
+
+  </div>
+</template>
 
 <script setup lang="ts">
 const cartStore = await useCartStore();
@@ -23,7 +34,6 @@ const groupedItems = computed(() => {
   }, {});
   return Object.values(groups);
 });
-
 const clearCart = () => {
   cartStore.clearCart();
 };
