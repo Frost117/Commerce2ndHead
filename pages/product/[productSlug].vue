@@ -19,7 +19,7 @@
                 <p>{{ (product as any).properties.price.withTax }} €</p>
                 <button
             type="button" 
-            @click="cartStore.addToCart(product as Product)"
+            @click="cartStore.addToCart(product, customerRef, orderId)"
             class="
             text-white 
             bg-gradient-to-br 
@@ -54,15 +54,13 @@
 </template>
 
 <script setup lang="ts">
-import type { Product } from '~/lib/umbraco/types';
 
 const { highlightedProducts } = useProduct();
 const route = useRoute()
 const product = await highlightedProducts( (route as any).params.productSlug )
 
 const cartStore = await useCartStore()
-const { cart } = storeToRefs(cartStore)
-const orderId = useGuid();
+const orderId = useGuid()();
 
 const customerRef = useCookie('customerToken')
 
