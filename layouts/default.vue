@@ -25,12 +25,17 @@
 <script setup lang="ts">
 import { useProductsStore } from '@/stores/products';
 
-const productsStore = useProductsStore()
+onMounted(() => {
+    const productsStore = useProductsStore()
 
-async function retrieveProducts() {
-    await productsStore.fetchProducts();
-}
-await retrieveProducts()
+    async function retrieveProducts() {
+        await productsStore.fetchProducts();
+    }
+
+    retrieveProducts()
+    
+})
+
 
 </script>
 

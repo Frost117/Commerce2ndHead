@@ -20,23 +20,15 @@
     <div v-else>
         no products in cart
     </div>
-
   </div>
 </template>
 
 <script setup lang="ts">
-const cartStore = await useCartStore();
 
-const groupedItems = computed(() => {
-  const groups = cartStore.cart.orderLines.reduce((acc, item) => {
-    (acc[item.id] = acc[item.id] || []).push(item);
-    return acc;
-  }, {});
-  return Object.values(groups);
-});
-const clearCart = () => {
-  cartStore.clearCart();
-};
+
+  const cartStore = useCartStore();
+
+
 
 </script>
 
