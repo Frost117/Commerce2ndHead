@@ -8,15 +8,19 @@ export default defineNuxtPlugin(({ $pinia }) => {
 async function CartPiniaPlugin(context: PiniaPluginContext) {
     if(context.store.$id === "cart"){
         if (!process.server){
-            const defaultCartFromStorage = localStorage.getItem('cart')
-            context.store.$state.cart = defaultCartFromStorage
+
+            const defaultCartFromStorage = localStorage.getItem("cart")
+            
+            const cartFromStorage = JSON.parse(defaultCartFromStorage || "{}")
+
+            context.store.$state.cart = cartFromStorage
         }
 
         let defaultEmptyCart = undefined 
 
         context.store.$subscribe((event: SubscriptionCallbackMutation<StateTree>) =>{
             if((event.events as any).key === "cart"){
-                localStorage.setItem('cart', (event.events as any).newValue || false)
+                localStorage.setItem('cart', JSON.stringify((event.events as any).newValue || false))
             }
         })
     }

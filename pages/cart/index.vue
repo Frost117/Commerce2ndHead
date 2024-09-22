@@ -2,7 +2,7 @@
   <div class="cart">
 
     <h2>Cart</h2>
-
+<!--
     <div v-if="cartStore.initCart === true">
 
       <div v-for="group in groupedItems" :key="group[0].id">
@@ -14,20 +14,19 @@
         </ul>
       </div>
 
-      <button @click="clearCart">Clear Cart</button>      
+      <button @click="$reset">Clear Cart</button>      
     </div>
 
     <div v-else>
         no products in cart
     </div>
+    -->
   </div>
 </template>
 
 <script setup lang="ts">
 
-
-  const cartStore = useCartStore();
-
+const cartStore = useCartStore();
 
 
 </script>

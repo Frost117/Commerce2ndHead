@@ -1,19 +1,28 @@
 import { defineStore, skipHydrate } from 'pinia';
 import { type Cart } from '~/lib/umbraco/types';
 import { useStorage } from '@vueuse/core'; 
-import { ref } from 'vue';
 
 export const useCartStore = defineStore('cart', () => {
-    const cart = useStorage('cart', ref({} as Cart));
+    
+    const cart = useStorage<Cart>('cart', {} as Cart);
+    const emptyCart = ref(true);
 
-    const initCart = ref(false);
+    async function checkCart() {
+        if(cart.value.cartNumber) {
+            emptyCart.value = false;
+        }
+    }
 
     async function addToCart(product: any, customerRef: any, orderId: string) {
-        if(!initCart.value) {
+        if(emptyCart.value === true) {
             await setCart(orderId, customerRef);
         } 
 
-        cart.value?.orderLines.push(product);
+        if(!cart.value.orderLines) {
+            cart.value.orderLines = [];
+        }
+
+        cart.value.orderLines.push(product);
 
         try {
             const response = await $fetch(`/api/cart/`, {
@@ -31,7 +40,7 @@ export const useCartStore = defineStore('cart', () => {
 
     async function setCart(orderId: string, customerRef: string) {
         try {
-            const response = await fetch(`/api/order`, {
+            const response = await $fetch(`/api/order`, {
                 method: "POST",
                 body:{ 
                     id: orderId,
@@ -39,24 +48,26 @@ export const useCartStore = defineStore('cart', () => {
                 }
             });
 
-            const { order } = await response.json();
+            const { order } = await response;
 
             cart.value = order;
-            initCart.value = true;
+            emptyCart.value = false;
+            
         } catch (err) {
             console.log(err);
         }
     }
 
-    function clearCart() {
-        cart.value = {};
-        initCart.value = false;
+    function $reset() {
+        cart.value = {} as Cart;
+        emptyCart.value = true;
     }
 
     return {
         cart,
-        initCart,
-        clearCart,
+        emptyCart,
+        $reset,
+        checkCart,
         addToCart,
         setCart,
     };

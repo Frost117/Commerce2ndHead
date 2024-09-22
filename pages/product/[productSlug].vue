@@ -60,8 +60,8 @@ const route = useRoute()
 const product = await highlightedProducts( (route as any).params.productSlug )
 
 const cartStore = await useCartStore()
-const orderId = useGuid()();
 
+const orderId = useGuid()();
 const customerRef = useCookie('customerToken')
 
 </script>
