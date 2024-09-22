@@ -1,19 +1,21 @@
 <template>
-    <div>
-        <img v-bind:src="'https://commerceheadless.euwest01.umbraco.io/' + Url" loading="lazy">
+    <div class="bg-cover bg-center">
+        <img 
+        class="rounded-md"
+        :src="'https://commerceheadless.euwest01.umbraco.io/' + url" 
+        loading="lazy"
+        />
     </div>
 </template>
 
 <script setup lang="ts">
 
-const props = defineProps({
-    Image: {
-        type: Object,
-    },
-    Url:{
-        type: String
-    }
-})
+import { type Image } from '@/lib/umbraco/types';
+
+const props = defineProps<{
+    url: Image["Url"],
+}>()
+
 
 </script>
 

@@ -1,42 +1,65 @@
 <template>            
-    <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <a href="#">
-            <div v-for="image in heroImage" >
-                <HeroImage 
-                :image="image"
-                :Url=image.Url
-                />
-            </div>
-        </a>
-        <div class="px-5 pb-5">
-            <a href="#">
-                <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                    {{ name }}
-                </h5>
-            </a>
-            
-            
-            <div class="flex items-center justify-between mb-2">
-                <p class="text-white">{{ properties.shortDescription }}</p>
-                <span class="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
-            </div>
-            <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
-        </div>
+    <div v-for="img in image" >
+        <HeroImage
+        :image="img"
+        :url=img.Url
+        />   
     </div>
-      
+    <div class="properties w-[350px]">
 
-
-    
+        
+        <p class="text-2xl">
+            <NuxtLink :to="`/product${path}`">{{ name }}</NuxtLink>
+        </p>
+        
+        <p>{{ properties.shortDescription }}</p>
+        <div v-if="properties.price && properties.price.WithTax">
+            <span>{{properties.price.WithTax}} €</span>
+            <button
+            type="button"
+            class="
+            text-white 
+            bg-gradient-to-br 
+            from-purple-600 
+            to-blue-500 
+            hover:bg-gradient-to-bl 
+            focus:ring-4 
+            focus:outline-none 
+            focus:ring-blue-300 
+            dark:focus:ring-blue-800 
+            font-medium 
+            rounded-lg 
+            text-sm 
+            px-5 
+            py-2.5 
+            text-center 
+            me-2 
+            mb-2
+            m-5
+            w-1/2">
+            Add to cart
+            </button>
+        </div>
+        <div v-else="properties.price">
+            <span>Out of Stock</span>
+        </div>
+        
+        
+        
+    </div>
 </template>
 
 <script setup lang="ts">
-import { Properties, Image } from '@/lib/umbraco/types';
+import { type Image, type Properties } from '@/lib/umbraco/types';
 
 const props = defineProps<{
+    id: string,
     name: string,
     properties: Properties,
-    heroImage: Image,
+    image: Image[],
+    path: string    
 }>()
+
 
 </script>
 

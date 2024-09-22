@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
   ssr: true,
   preset: 'node-server',
-  devtools: { enabled: true },
   components:[
     {
       path: '~/components',
@@ -11,7 +10,9 @@ export default defineNuxtConfig({
   ],
   modules:[
     '@pinia/nuxt',
-    '@nuxtjs/tailwindcss'
+    '@pinia-plugin-persistedstate/nuxt',
+    '@nuxt/ui',
+    'nuxt-typed-router'
   ],
   tailwindcss: {
     cssPath: '~/assets/css/input.css'
@@ -20,8 +21,9 @@ export default defineNuxtConfig({
     dirs:['stores']
   },
   runtimeConfig:{
-    baseUrl:"https://commerceheadless.euwest01.umbraco.io/api/v1/products",
-    appSecret: "3vC9B7sesuzXflUgYP3Z1lbGdzeEgDV8"
+    baseUrl:"https://commerceheadless.euwest01.umbraco.io/",
+    appSecret: "3vC9B7sesuzXflUgYP3Z1lbGdzeEgDV8",
+    commerceStore: "bdf1ea22-4ea0-4381-950d-01894f71b54b"
   },
   pinia:{
     autoImports: [

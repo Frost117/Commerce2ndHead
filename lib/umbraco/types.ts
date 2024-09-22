@@ -7,11 +7,12 @@ export interface Products {
   contentType: ContentType;
   createDate:  Date;
   cultures:    Cultures;
-  id:          string;
+  Id:          string;
   Name:        string;
   Properties:  Properties;
-  route:       Route;
+  Route:       Route;
   updateDate:  Date;
+  path:        string;  
  }
  
  export enum ContentType {
@@ -29,6 +30,7 @@ export interface Products {
   metaDescription:  string;
   metaTitle:        string;
   price:            Price;
+  productHighlight: ProductHighlight;
   shortDescription: string;
   sku:              string;
   stock:            number;
@@ -39,6 +41,53 @@ export interface Products {
   variants:         Variants | null;
  }
  
+ export interface ProductHighlight {
+  items: Item[];
+ }
+
+ export interface Item {
+  content:  Content;
+  settings: null;
+ }
+
+ export interface Content {
+  contentType: string;
+  id:          string;
+  properties:  ContentProperties;
+ }
+
+ export interface ContentProperties {
+  productDescription:    string;
+  productHighlightImage: ProductHighlightImage[];
+  productLink:           ProductLink;
+  productName:           string;
+ }
+
+ export interface ProductHighlightImage {
+  bytes:      number;
+  crops:      Crop[];
+  extension:  string;
+  focalPoint: FocalPoint | null;
+  height:     number;
+  id:         string;
+  mediaType:  string;
+  name:       string;
+  properties: Cultures;
+  url:        string;
+  width:      number;
+ }
+
+ export interface ProductLink {
+  contentType: string;
+  createDate:  Date;
+  id:          string;
+  name:        string;
+  properties:  Cultures;
+  route:       Route;
+  updateDate:  Date;
+ }
+ 
+
  export interface BgColor {
   color: string;
   label: string;
@@ -144,16 +193,89 @@ export interface Products {
  }
  
  export interface Route {
-  path:      string;
+  Path:      string;
   startItem: StartItem;
  }
  
  export interface StartItem {
   id:   string;
-  path: Path;
+  Path: Path;
  }
  
  export enum Path {
   Products = "products",
+ }
+ 
+ export interface Cart {
+  cartNumber:        string;
+  createDate:        Date;
+  currency:          Currency;
+  customerInfo:      CustomerInfo;
+  id:                string;
+  isFinalized:       boolean;
+  languageIsoCode:   string;
+  orderLines:        any[];
+  orderStatus:       OrderStatus;
+  paymentInfo:       Info;
+  shippingInfo:      Info;
+  subtotalPrice:     TotalPrice;
+  taxClass:          OrderStatus;
+  totalPrice:        TotalPrice;
+  totalQuantity:     number;
+  transactionAmount: TransactionAmount;
+  updateDate:        Date;
+ }
+ 
+ export interface Currency {
+  $type: string;
+  code:  string;
+  id:    string;
+ }
+ 
+ export interface CustomerInfo {
+  customerReference: string;
+ }
+ 
+ export interface OrderStatus {
+  $type: string;
+  alias: string;
+  id:    string;
+ }
+ 
+ export interface Info {
+  taxRate:    number;
+  totalPrice: TotalPrice;
+ }
+ 
+ export interface TotalPrice {
+  value: SubtotalPriceValue;
+ }
+ 
+ export interface SubtotalPriceValue {
+  currency:   Currency;
+  formatted:  PurpleFormatted;
+  tax:        number;
+  withTax:    number;
+  withoutTax: number;
+ }
+ 
+ export interface PurpleFormatted {
+  tax:        string;
+  withTax:    string;
+  withoutTax: string;
+ }
+ 
+ export interface TransactionAmount {
+  value: TransactionAmountValue;
+ }
+ 
+ export interface TransactionAmountValue {
+  currency:  Currency;
+  formatted: FluffyFormatted;
+  value:     number;
+ }
+ 
+ export interface FluffyFormatted {
+  value: string;
  }
  

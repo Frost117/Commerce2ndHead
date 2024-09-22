@@ -11,17 +11,23 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.8.0",
+    "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
     "@types/node": "^18.17.3",
-    "nuxt": "^3.6.5"
+    "nuxt": "^3.9.3",
+    "sass": "^1.69.7"
   },
   "overrides": {
     "vue": "latest"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.1.1",
     "@nuxt/image": "^1.0.0-rc.3",
-    "@pinia/nuxt": "^0.4.11",
+    "@nuxt/ui": "^2.10.0",
+    "@pinia/nuxt": "^0.5.1",
     "flowbite": "^1.8.1",
-    "pinia": "^2.1.6",
+    "nuxt-typed-router": "^3.3.2",
+    "pinia": "^2.1.7",
+    "vue-dompurify-html": "^5.0.1",
     "vue-infinite-loading": "^2.4.5"
   }
 }

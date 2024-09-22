@@ -1,47 +1,31 @@
 <template>
-    <main>
-        <h1>Welcome to the BlackOps Commerce Store!</h1>
-        <h3>Your supplier for Umbraco Swag and other goods!</h3>
-
-        <div class="featured">
-            <h2>Check some of our featured products</h2>
-            <div class="featured-products">
-                <Product 
-                    v-for="product in products"
-                    :id=product.id
-                    :name=product.Name
-                    :properties=product.Properties
-                    :heroImage= product.Properties.heroImage
+    <div>
+        <div v-for="products in page.properties.productHighlight">
+            
+            <div v-for="product in products" :key="product.content.id">     
+                
+                <HighlightProduct
+                    :id=product.content.id
+                    :name=product.content.properties.productName
+                    :route=product.content.properties.productLink.route.path
+                    :image=product.content.properties.productHighlightImage
+                    :description=product.content.properties.productDescription
+                    :url=product.content.properties.productLink.route.path
                 />
             </div>
+            
         </div>
         
-    </main>
+        
+    </div>
 </template>
 
 <style>
-    body {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-    }
-    main {
-        min-height: 100vh;
-    }
-
-    main > h1, h3 {
-        text-align: center;
-        color: white;
-        /* text-shadow: 2px 3px 0px #898999; */
-        font-family: 'Roboto', sans-serif;
-    }
 
 </style>
 
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
-
-const productsStore = useProductsStore();
-const { products } = storeToRefs(productsStore)
+const { highlightedProducts } = useProduct();
+const page = await highlightedProducts('home')
 
 </script>
