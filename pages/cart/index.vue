@@ -2,8 +2,8 @@
   <div class="cart">
 
     <h2>Cart</h2>
-<!--
-    <div v-if="cartStore.initCart === true">
+
+    <div v-if="cartStore.emptyCart === false">
 
       <div v-for="group in groupedItems" :key="group[0].id">
         <h3>{{ group[0].name }} - {{ group[0].price }}</h3>
@@ -14,13 +14,12 @@
         </ul>
       </div>
 
-      <button @click="$reset">Clear Cart</button>      
+      <button @click="cartStore.$reset">Clear Cart</button>      
     </div>
 
     <div v-else>
         no products in cart
     </div>
-    -->
   </div>
 </template>
 
