@@ -2,7 +2,9 @@
 export default defineNuxtConfig({
   ssr: true,
   preset: 'node-server',
-
+  vite: {
+    
+  },
   components:[
     {
       path: '~/components',
