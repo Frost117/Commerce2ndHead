@@ -1,6 +1,7 @@
 <template>            
         <NuxtLayout>
             <main class="flex container mx-auto pt-9">
+                <NuxtLoadingIndicator/>
                 <NuxtPage/>
             </main>
         </NuxtLayout>
@@ -11,10 +12,7 @@
 const customerToken = useCookie('customerToken');
 
 if (!customerToken.value) {
-  const newGuid = useGuid();
-customerToken.value = "cust_" + newGuid();
+  customerToken.value = "cust_" + useGuid();
 }
-
-
 
 </script>

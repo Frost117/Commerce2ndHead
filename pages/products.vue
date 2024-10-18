@@ -37,8 +37,8 @@
                 </div>
             
             
-            <Button direction="previous" @click="loadPreviousPage()"/>
-            <Button direction="next" @click="loadNextPage()"/>
+            <Button direction="previous" @click="loadPreviousPage()" />
+            <Button direction="next" @click="loadNextPage()" />
             
         </div> 
         
@@ -54,6 +54,7 @@ const {
   uniqueTags,
   filteredProducts,
 } = useFilters();
+
 
 function loadNextPage() {
     productsStore.nextPage();
