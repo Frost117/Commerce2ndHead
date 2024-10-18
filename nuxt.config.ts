@@ -27,12 +27,9 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     '@nuxt/ui',
-    'nuxt-typed-router'
+    'nuxt-typed-router',
+    '@nuxtjs/tailwindcss'
   ],
-
-  tailwindcss: {
-    cssPath: '~/assets/css/input.css'
-  },
 
   imports:{
     dirs:['stores']
