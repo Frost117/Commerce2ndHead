@@ -8,7 +8,7 @@
                 </ul>
 
                 <!-- Right -->
-                <Cart />
+                <CartIcon />
             </nav>
             
             

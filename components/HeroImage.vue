@@ -13,7 +13,7 @@
 import { type Image } from '@/lib/umbraco/types';
 
 const props = defineProps<{
-    url: Image["Url"],
+    url: Image["url"],
 }>()
 
 

@@ -53,6 +53,7 @@
     </main>
 </template>
 
+
 <script setup lang="ts">
 
 const { highlightedProducts } = useProduct();

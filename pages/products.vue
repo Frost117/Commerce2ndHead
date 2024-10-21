@@ -25,14 +25,46 @@
 
             
                 <div class="grid grid-cols-3 gap-4">
-                    <div v-for="product in filteredProducts" :key="product.Id">
+                    <div v-for="product in filteredProducts" :key="product.id">
                         <Product
-                            :id=product.Id
-                            :name=product.Name
-                            :properties=product.Properties
-                            :image=product.Properties.heroImage
-                            :path=product.Route.Path
+                            :id=product.id
+                            :name=product.name
+                            :properties=product.properties
+                            :image=product.properties.heroImage
+                            :path=product.route.path
+                            @add-to-cart="handleAddToCart"
                         />
+                        <div v-if="product.properties.price && product.properties.price.withTax">
+                        <span>{{product.properties.price.withTax}} €</span>
+                        <button 
+                        @click="cartStore.addToCart(product)"
+                        type="button"
+                        class="
+                        text-white 
+                        bg-gradient-to-br 
+                        from-purple-600 
+                        to-blue-500 
+                        hover:bg-gradient-to-bl 
+                        focus:ring-4 
+                        focus:outline-none 
+                        focus:ring-blue-300 
+                        dark:focus:ring-blue-800 
+                        font-medium 
+                        rounded-lg 
+                        text-sm 
+                        px-5 
+                        py-2.5 
+                        text-center 
+                        me-2 
+                        mb-2
+                        m-5
+                        w-1/2">
+                        Add to cart
+                        </button>
+                    </div>
+                    <div v-else="product.properties.price">
+                        <span>Out of Stock</span>
+                    </div>
                     </div>
                 </div>
             
@@ -48,6 +80,7 @@
 <script setup lang="ts">
 
 const productsStore = useProductsStore();
+const cartStore = useCartStore();
 
 const {
   selectedTags,

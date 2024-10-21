@@ -7,10 +7,10 @@ export interface Products {
   contentType: ContentType;
   createDate:  Date;
   cultures:    Cultures;
-  Id:          string;
-  Name:        string;
-  Properties:  Properties;
-  Route:       Route;
+  id:          string;
+  name:        string;
+  properties:  Properties;
+  route:       Route;
   updateDate:  Date;
   path:        string;  
  }
@@ -103,7 +103,7 @@ export interface Products {
   MediaType:  string;
   Name:       string;
   Properties: Cultures;
-  Url:        string;
+  url:        string;
   Width:      number;
  }
  
@@ -193,7 +193,7 @@ export interface Products {
  }
  
  export interface Route {
-  Path:      string;
+  path:      string;
   startItem: StartItem;
  }
  
@@ -214,7 +214,7 @@ export interface Products {
   id:                string;
   isFinalized:       boolean;
   languageIsoCode:   string;
-  orderLines:        any[];
+  orderLines:        OrderLines[];
   orderStatus:       OrderStatus;
   paymentInfo:       Info;
   shippingInfo:      Info;
@@ -224,6 +224,17 @@ export interface Products {
   totalQuantity:     number;
   transactionAmount: TransactionAmount;
   updateDate:        Date;
+ }
+
+ export interface OrderLines {
+  contentType:      string;
+  createDate:       Date;
+  cultures:         Cultures;
+  id:               string;
+  name:             string;
+  properties:       Properties;
+  route:            Route;
+  updateDate:       Date;
  }
  
  export interface Currency {

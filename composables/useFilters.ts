@@ -12,9 +12,9 @@ export function useFilters() {
             return [];
           }
 
-      const tags = products.value.reduce((allTags, product) => {
-        if (product.Properties && product.Properties.tags) {
-          return allTags.concat(product.Properties.tags);
+      const tags = products.value.reduce((allTags: string[], product) => {
+        if (product.properties && product.properties.tags) {
+          return allTags.concat(product.properties.tags);
         }
         return allTags;
       }, []);
@@ -25,7 +25,7 @@ export function useFilters() {
       if (!selectedTags.value.length || selectedTags.value.includes('')) {
         return products.value;
       }
-      return products.value.filter(product => product.Properties.tags?.some(tag => selectedTags.value.includes(tag)));
+      return products.value.filter(product => product.properties.tags?.some(tag => selectedTags.value.includes(tag)));
     });
     
     return {
