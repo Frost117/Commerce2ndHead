@@ -32,7 +32,6 @@
                             :properties=product.properties
                             :image=product.properties.heroImage
                             :path=product.route.path
-                            @add-to-cart="handleAddToCart"
                         />
                         <div v-if="product.properties.price && product.properties.price.withTax">
                         <span>{{product.properties.price.withTax}} €</span>

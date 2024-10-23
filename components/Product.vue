@@ -9,13 +9,11 @@
 
         
         <p class="text-2xl">
-            <NuxtLink :to="`/product${path}`">{{ name }}</NuxtLink>
+            <NuxtLink :to="`/product${path}` as any">{{ name }}</NuxtLink>
         </p>
         
         <p>{{ properties.shortDescription }}</p>
-        
-        
-        
+              
         
     </div>
 </template>
@@ -30,12 +28,6 @@ const props = defineProps<{
     image: Image[],
     path: string    
 }>()
-
-const emit = defineEmits(['add-to-cart']);
-
-const handleAddToCart = () => {
-    emit('add-to-cart', {id: props.id})
-}
 
 </script>
 

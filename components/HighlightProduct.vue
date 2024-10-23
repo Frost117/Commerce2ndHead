@@ -5,7 +5,7 @@
         <div v-for="img in image"
         class="relative mt-5 mr-5 mb-5 rounded-md w-96" >
         
-        <NuxtLink :to="{path: `product${route}`}">
+        <NuxtLink :to="{path: `product${route}` as string}">
             <HeroImage 
             :url=img?.url
             />
@@ -29,12 +29,11 @@
 import { type ProductHighlightImage, type Properties, type Image } from '@/lib/umbraco/types';
 
 const props = defineProps<{
-    id: string,
-    image: ProductHighlightImage,
+    image: ProductHighlightImage[],
     name: ProductHighlightImage["name"],
     description: Properties["shortDescription"],
     route: string,
-    url: Image["Url"]
+    url: Image["url"]
 }>()
 
 
