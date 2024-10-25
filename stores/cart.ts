@@ -13,7 +13,7 @@ export const useCartStore = defineStore('cart', () => {
         }
     }
 
-    async function addToCart(product: any, customerRef: any, orderId: string) {
+    async function addToCart(product: any, customerRef: string, orderId: string) {
         if(emptyCart.value === true) {
             await setCart(orderId, customerRef);
         } 
@@ -44,7 +44,7 @@ export const useCartStore = defineStore('cart', () => {
                 method: "POST",
                 body:{ 
                     id: orderId,
-                    customerReference: customerRef
+                    customerInfo: customerRef
                 }
             });
 
