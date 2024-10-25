@@ -10,10 +10,10 @@
 
 <script setup lang="ts">
 
-import { type Image } from '@/lib/umbraco/types';
+import { type Image, type Crop } from '@/lib/umbraco/types';
 
 const props = defineProps<{
-    url: Image["url"],
+    url: Image["url"]
 }>()
 
 

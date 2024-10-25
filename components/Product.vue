@@ -9,7 +9,9 @@
     <div class="properties w-[350px]">
     
         <p class="text-2xl">
-            <NuxtLink :to="`/product${path}` as any">{{ name }}</NuxtLink>
+            <NuxtLink :to="productUrl">
+                {{ name }} 
+            </NuxtLink>
         </p>
         
         <p>{{ properties.shortDescription }}</p>
@@ -29,6 +31,7 @@ const props = defineProps<{
     path: string    
 }>()
 
+const productUrl = computed(() => `/product${props.path}`);
 </script>
 
 <style scoped>
