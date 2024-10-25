@@ -1,8 +1,8 @@
 <template>
     <div class="bg-cover bg-center">
-        <img 
+        <NuxtImg 
         class="rounded-md"
-        :src="'https://commerceheadless.euwest01.umbraco.io/' + url" 
+        :src="'https://commerceheadless.euwest01.umbraco.io/' + url"
         loading="lazy"
         />
     </div>

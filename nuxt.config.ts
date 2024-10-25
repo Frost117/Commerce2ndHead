@@ -8,27 +8,16 @@ export default defineNuxtConfig({
       extensions: ['vue']
     }
   ],
-  build: {
-    extractCSS: true,
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          styles: {
-            name: 'styles',
-            test: /\.(css|vue)$/,
-            chunks: 'all',
-            enforce: true
-          }
-        }
-      }
-    }
+  image:{
+    
   },
   modules:[
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     '@nuxt/ui',
     'nuxt-typed-router',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@nuxt/image',
   ],
 
   imports:{

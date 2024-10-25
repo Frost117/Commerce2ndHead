@@ -7,7 +7,7 @@ export default defineNuxtPlugin(({ $pinia }) => {
 
 async function CartPiniaPlugin(context: PiniaPluginContext) {
     if(context.store.$id === "cart"){
-        if (!process.server){
+        if (!import.meta.server){
 
             const defaultCartFromStorage = localStorage.getItem("cart")
             

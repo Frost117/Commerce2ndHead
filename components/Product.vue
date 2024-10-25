@@ -9,15 +9,12 @@
     <div class="properties w-[350px]">
     
         <p class="text-2xl">
-            <NuxtLink :to="`/product${path}`">
-                {{ name }}
-            </NuxtLink>
+            <NuxtLink :to="`/product${path}` as any">{{ name }}</NuxtLink>
         </p>
         
-        <p>
-            {{ properties.shortDescription }}
-        </p>
-                
+        <p>{{ properties.shortDescription }}</p>
+              
+        
     </div>
 </template>
 
