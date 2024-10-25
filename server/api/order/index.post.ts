@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
     const orderId = body.id
 
     // Get the customer token from the cookie
-    const customRef = getCookie(event, 'customerToken')
+    const customerRef = body.customerRef
 
     // Make a POST request to the endpoint with the order id
     const order = await $fetch(`${runtimeConfig.baseUrl}umbraco/commerce/storefront/api/v1/orders`, {
@@ -20,10 +20,11 @@ export default defineEventHandler(async (event) => {
       // Send the order id and customer ref in the body of the request
       body: { 
         id: orderId,
-        customerReference: customRef
+        customerInfo: customerRef
      } 
     })
 
+    console.log(order)
     return {
       order
     }
