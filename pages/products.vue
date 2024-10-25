@@ -32,12 +32,11 @@
                             :properties=product.properties
                             :image=product.properties.heroImage
                             :path=product.route.path
-                            @add-to-cart="handleAddToCart"
                         />
                         <div v-if="product.properties.price && product.properties.price.withTax">
                         <span>{{product.properties.price.withTax}} €</span>
                         <button 
-                        @click="cartStore.addToCart(product)"
+                        @click="cartStore.addToCart(product, customerRef)"
                         type="button"
                         class="
                         text-white 
@@ -67,8 +66,7 @@
                     </div>
                     </div>
                 </div>
-            
-            
+                       
             <Button direction="previous" @click="loadPreviousPage()" />
             <Button direction="next" @click="loadNextPage()" />
             
@@ -78,6 +76,8 @@
 </template>
 
 <script setup lang="ts">
+
+const customerRef = useCookie('customerToken')
 
 const productsStore = useProductsStore();
 const cartStore = useCartStore();
