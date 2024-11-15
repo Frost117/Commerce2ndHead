@@ -4,6 +4,7 @@
         class="rounded-md"
         :src="'https://commerceheadless.euwest01.umbraco.io/' + url"
         loading="lazy"
+        :width="width"
         />
     </div>
 </template>
@@ -14,6 +15,7 @@ import { type Image, type Crop } from '@/lib/umbraco/types';
 
 const props = defineProps<{
     url: Image["url"]
+    width: Image["width"]
 }>()
 
 

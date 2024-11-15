@@ -94,17 +94,17 @@ export interface Products {
  }
  
  export interface Image {
-  Bytes:      number;
-  Crops:      Crop[];
-  Extension:  string;
-  FocalPoint: FocalPoint;
-  Height:     number;
-  Id:         string;
-  MediaType:  string;
-  Name:       string;
-  Properties: Cultures;
+  bytes:      number;
+  crops:      Crop[];
+  extension:  string;
+  focalPoint: FocalPoint;
+  height:     number;
+  id:         string;
+  mediaType:  string;
+  name:       string;
+  properties: Cultures;
   url:        string;
-  Width:      number;
+  width:      number;
  }
  
  export interface FocalPoint{
@@ -218,7 +218,7 @@ export interface Products {
   orderStatus:       OrderStatus;
   paymentInfo:       Info;
   shippingInfo:      Info;
-  subtotalPrice:     TotalPrice;
+  subtotalPrice:     SubtotalPrice;
   taxClass:          OrderStatus;
   totalPrice:        TotalPrice;
   totalQuantity:     number;
@@ -259,12 +259,21 @@ export interface Products {
  }
  
  export interface TotalPrice {
-  value: SubtotalPriceValue;
- }
- 
- export interface SubtotalPriceValue {
   currency:   Currency;
   formatted:  PurpleFormatted;
+  value:      PriceValue;
+ }
+ 
+ export interface SubtotalPrice {
+  value:      PriceValue;
+  currency:   Currency;
+  formatted:  PurpleFormatted;
+
+ }
+
+ export interface PriceValue {
+  currency:   Currency;
+  formatted:  FluffyFormatted;
   tax:        number;
   withTax:    number;
   withoutTax: number;

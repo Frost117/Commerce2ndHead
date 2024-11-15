@@ -3,10 +3,11 @@
         <HeroImage
         :image="img"
         :url=img.url
+        :width="img.crops[0].width"
         />   
     </div>
     
-    <div class="properties w-[350px]">
+    <div class="properties w-[350px] h-1/2">
     
         <p class="text-2xl">
             <NuxtLink :to="productUrl">

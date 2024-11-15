@@ -1,21 +1,23 @@
 <template>
-  <div>
-    <div v-for="(products, id ) in groupedOrderLines" :key="id">
+  
+    <div v-for="(products, id ) in groupedOrderLines" :key="id" class="grid grid-cols-3" id="product">
       
-      {{ products[0].name }}
-      {{ products.length }}
+      <HeroImage 
+      :url="products[0].properties.heroImage[0].url"
+      :width="products[0].properties.heroImage[0].crops[1].width"
+      />
 
-      <div v-for="product in products" :key="product.id">
-        {{ product.name }}
-        {{ product.properties.price.withTax }}
-        <HeroImage :url="product.properties.heroImage[0].url" />
+      <div class="grid grid-rows-4 w-10/12 ml-4">
+        <p class="text-lg font-semibold row-span-1">{{ products[0].name }}</p>      
+        <p class="row-span-2">{{ products[0].properties.shortDescription }}</p>
+        <p class="content-end">Price: {{ products[0].properties.price.withTax }} €</p>
       </div>
+
+      <p class="content-end">Quantity: {{ products.length }}</p>
       
     </div>
     
-
-  </div>
-</template>
+  </template>
 
 <script setup lang="ts">
 
@@ -36,3 +38,13 @@ const groupedOrderLines = computed(() => {
 });
 
 </script>
+
+<style scoped>
+
+#product {
+  border: 2px solid #ccc rounded;
+  padding: 10px;
+  margin: 10px;
+}
+
+</style>

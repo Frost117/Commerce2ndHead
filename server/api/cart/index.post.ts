@@ -6,12 +6,8 @@ export default defineEventHandler(async (event) => {
     // Parse the body of the request
     const body = await readBody(event)
 
-    // Extract the order id from the body
-    const orderId = body.cartId
-    const productReference = body.productReference
-
     // Make a POST request to the endpoint with the order id
-    const order = await $fetch<Cart>(`${runtimeConfig.baseUrl}umbraco/commerce/storefront/api/v1/order/${orderId}`, {
+    const order = await $fetch<Cart>(`${runtimeConfig.baseUrl}umbraco/commerce/storefront/api/v1/order/${body.cartId}`, {
       method: "POST",
       headers:{
         'Api-Key': runtimeConfig.appSecret,
@@ -19,10 +15,11 @@ export default defineEventHandler(async (event) => {
       },
       // Send the order id and customer ref in the body of the request
       body: {
-        productReference: productReference,
-        quantity: 1
+        productReference: body.productReference,
+        quantity: 1,
       }
     })
+    
     return {
       order
     }

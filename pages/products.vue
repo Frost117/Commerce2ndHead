@@ -25,7 +25,7 @@
 
             
                 <div class="grid grid-cols-3 gap-4">
-                    <div v-for="product in filteredProducts" :key="product.id">
+                    <div v-for="product in filteredProducts" :key="product.id" class="grid grid-rows-1">
                         <Product
                             :id=product.id
                             :name=product.name
@@ -33,37 +33,37 @@
                             :image=product.properties.heroImage
                             :path=product.route.path
                         />
-                        <div v-if="product.properties.price && product.properties.price.withTax">
-                        <span>{{product.properties.price.withTax}} €</span>
-                        <button 
-                        @click="cartStore.addToCart(product, customerRef)"
-                        type="button"
-                        class="
-                        text-white 
-                        bg-gradient-to-br 
-                        from-purple-600 
-                        to-blue-500 
-                        hover:bg-gradient-to-bl 
-                        focus:ring-4 
-                        focus:outline-none 
-                        focus:ring-blue-300 
-                        dark:focus:ring-blue-800 
-                        font-medium 
-                        rounded-lg 
-                        text-sm 
-                        px-5 
-                        py-2.5 
-                        text-center 
-                        me-2 
-                        mb-2
-                        m-5
-                        w-1/2">
-                        Add to cart
-                        </button>
-                    </div>
-                    <div v-else="product.properties.price">
-                        <span>Out of Stock</span>
-                    </div>
+                        <div class="row-span-1 grid grid-rows-2 items-center" v-if="product.properties.price && product.properties.price.withTax">
+
+                            <span class="row-span-1">{{product.properties.price.withTax}} €</span>
+                            
+                            <button 
+                            @click="handleAddToCart(product, customerRef)"
+                            type="button"
+                            class="
+                            justify-self-center
+                            row-span-1
+                            text-white 
+                            transition-all duration-500 bg-gradient-to-tl 
+                            from-purple-600 via-green-500 to-blue-500
+                            bg-size-200 bg-pos-0 hover:bg-pos-100
+                            font-medium 
+                            rounded-lg 
+                            text-sm 
+                            px-5 
+                            py-2.5 
+                            text-center                              
+                            mb-2                            
+                            w-1/2
+                            ">
+                            Add to cart
+                            </button>
+                        </div>
+
+                        <div v-else="product.properties.price">
+                            <span>Out of Stock</span>
+                        </div>
+
                     </div>
                 </div>
                        
@@ -78,9 +78,21 @@
 <script setup lang="ts">
 
 const customerRef = useCookie('customerToken')
-
 const productsStore = useProductsStore();
 const cartStore = useCartStore();
+
+const loadingProductId = ref<string | null>(null);
+
+const handleAddToCart = async (product: any, customerRef: any) => {
+  loadingProductId.value = product.id;
+  try {
+    await cartStore.addToCart(product, customerRef);
+  } catch (error) {
+    console.error('Failed to add product to cart:', error);
+  } finally {
+    loadingProductId.value = null;
+  }
+};
 
 const {
   selectedTags,

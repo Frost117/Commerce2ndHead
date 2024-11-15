@@ -23,8 +23,6 @@ export default defineEventHandler(async (event) => {
         customerInfo: customerRef
      } 
     })
-
-    console.log(order)
     return {
       order
     }

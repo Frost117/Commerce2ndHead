@@ -32,7 +32,19 @@ export const useCartStore = defineStore('cart', () => {
                     cartId: cart.value?.id,
                     productReference: product.id
                 }
-            });              
+            });
+            
+            if (response && response.order) {
+                cart.value.subtotalPrice = response.order.subtotalPrice;
+                cart.value.totalPrice = response.order.totalPrice;
+                cart.value.totalQuantity = response.order.totalQuantity;
+                // Update other relevant fields if needed
+            } else {
+                // Handle the case where the response does not contain the expected order object
+                console.error('Unexpected response format:', response);
+            }
+
+            
         } catch (error) {
             console.log(error);
         }
