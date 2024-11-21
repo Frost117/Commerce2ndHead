@@ -8,7 +8,9 @@
                 </ul>
 
                 <!-- Right -->
-                <CartIcon />
+                <CartIcon 
+                :amount="store.cart.orderLines"
+                />
             </nav>
             
             
@@ -26,6 +28,7 @@
 import { useProductsStore } from '@/stores/products';
 
 const productsStore = useProductsStore()
+const store = await useCartStore();
 
 async function retrieveProducts() {
     await productsStore.fetchProducts();

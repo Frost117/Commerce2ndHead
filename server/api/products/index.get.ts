@@ -6,6 +6,7 @@ export default defineEventHandler(async (event) => {
     const params = getQuery(event)
 
     const response = await $fetch<Products>(`${runtimeConfig.baseUrl}/api/v1/products?page=${params.page}`, {
+        method: "GET",
         parseResponse: JSON.parse
     })
 
