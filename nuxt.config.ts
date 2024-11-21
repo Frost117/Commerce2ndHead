@@ -35,6 +35,7 @@ export default defineNuxtConfig({
     'nuxt-typed-router',
     '@nuxtjs/tailwindcss',
     '@nuxt/image',
+    '@nuxthub/core',
   ],
 
   imports:{

@@ -1,12 +1,15 @@
 <template>
     <ClientOnly>
         <NuxtLink to="/cart">
+        <div class="flex justify-center">
             <ShoppingBagIcon class="h-6 w-6 text-white" />
-        </NuxtLink>
+        
 
-        <div v-if="store.cart.orderLines && store.cart.orderLines.length > 0">
-            <p> {{ store.cart.orderLines.length }}</p>
+            <p v-if="amount && amount.length > 0">
+                {{ amount.length }}
+            </p>
         </div>
+        </NuxtLink>
     </ClientOnly>
 
 </template>
@@ -14,13 +17,9 @@
 <script setup lang="ts">
 import { ShoppingBagIcon } from '@heroicons/vue/24/outline';
 
-const store = await useCartStore();
-
-async function retrieveCart() {
-    await store.checkCart();
-}
-
-retrieveCart()
+const props = defineProps<{
+    amount: Array<{}>
+}>()
 
 </script>
 
