@@ -1,7 +1,7 @@
 <template>
     <main id="content-body" class="flex container mx-auto">
 
-        <div id="sidebarwrap" class="w-1/6">
+        <div id="sidebarwrap" class="w-1/6 hidden lg:block">
             <div id="categories" class="pb-10">
                 
                 <h4 class="text-2xl text-slate-50 font-semibold mb-2">Categories</h4>
@@ -24,7 +24,7 @@
             <h1 class="text-2xl text-slate-50 font-semibold mb-2">Products</h1>
 
             
-                <div class="grid grid-cols-3 gap-4">
+                <div class="grid grid-cols-3 gap-4 sm:grid-cols-1">
                     <div v-for="product in filteredProducts" :key="product.id" class="grid grid-rows-1">
                         <Product
                             :id=product.id
