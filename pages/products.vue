@@ -24,7 +24,7 @@
             <h1 class="text-2xl text-slate-50 font-semibold mb-2">Products</h1>
 
             
-                <div class="grid grid-cols-3 gap-4 sm:grid-cols-1">
+                <div class="grid gap-4 lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2">
                     <div v-for="product in filteredProducts" :key="product.id" class="grid grid-rows-1">
                         <Product
                             :id=product.id

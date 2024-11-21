@@ -1,6 +1,6 @@
 <template>
   
-    <div v-for="(products, id ) in groupedOrderLines" :key="id" class="grid grid-cols-3" id="product">
+    <div v-for="(products, id ) in groupedOrderLines" :key="id" class="grid grid-cols-3 border-2 rounded-md" id="product">
       
       <HeroImage 
       :url="products[0].properties.heroImage[0].url"
